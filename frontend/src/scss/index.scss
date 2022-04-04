@@ -1,0 +1,37 @@
+// font-family: 'Padauk', sans-serif;
+// font-family: 'Inter', sans-serif;
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-weight: 300;
+   scroll-behavior: smooth;
+}
+
+div.App { overflow-x: hidden; }
+
+body {
+   background: rgb(220, 220, 220);
+   min-height: 100vh;
+   overflow-x: hidden;
+   font-family: 'Inter', sans-serif;
+
+   &::-webkit-scrollbar {
+      width: 4px;
+      background-color: rgb(255, 255, 255);
+   }
+
+   &::-webkit-scrollbar-thumb {
+      width: 100%;
+      background: cornflowerblue;
+   }
+}
+
+/*
+
+@media (max-width:768px) {
+
+}
+
+*/

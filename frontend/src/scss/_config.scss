@@ -1,0 +1,19 @@
+$light-background: rgb(220, 220, 220);
+
+@mixin flex-sa-c {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+
+@mixin flex-sb-c {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+@mixin flex-c-c {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
