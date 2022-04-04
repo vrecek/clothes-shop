@@ -10,14 +10,16 @@ nav.layout-nav-categories {
 
 
       li.outer-li {
-         width: 14.35%;
-         min-width: 110px;
+         // width: 14.35%;
+         width: 12.5%;
+         //min-width: 110px;
          padding: clamp(.8rem, 4vw, 1rem) 0;
          background: rgb(248, 248, 248);
          @include flex-c-c;
          cursor: pointer;
          transition: .2s;
          position: relative;
+         font-size: clamp(.9rem, 1.5vw, 1rem);
 
          p {
             pointer-events: none;

@@ -83,8 +83,7 @@ nav.layout-nav {
    }
 
    section.nav-icons {
-      @include flex-c-c;
-      
+      @include flex-c-c;      
       width: 34%;
 
       a {
@@ -125,7 +124,7 @@ nav.layout-nav {
          width: 24px;
          height: 18px;
          position: absolute;
-         right: 1%;
+         right: 2%;
          cursor: pointer;
          
          span {

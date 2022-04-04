@@ -9,13 +9,14 @@
    scroll-behavior: smooth;
 }
 
-div.App { overflow-x: hidden; }
+div.App { overflow: hidden; }
 
 body {
-   background: rgb(220, 220, 220);
+   background: rgb(230, 230, 230);
    min-height: 100vh;
-   overflow-x: hidden;
+   width: 100vw;
    font-family: 'Inter', sans-serif;
+   overflow-x: hidden;
 
    &::-webkit-scrollbar {
       width: 4px;

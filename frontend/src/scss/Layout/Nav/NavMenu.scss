@@ -5,13 +5,14 @@ aside.nav-menu {
    width: 320px;
    max-width: 100%;
    position: absolute;
+   height: 100vh;
    right: 0;
    top: 100%;
-   z-index: 999999;
    transition: .5s;
    border: 2px solid rgb(240, 108, 0);
    border-radius: 0 0 .5em .5em;
    transform: translateX(100%);
+   z-index: 999999;
 
    section {
       position: relative;
@@ -78,12 +79,13 @@ aside.nav-menu {
 }
 
 div.blackout-menu {
-   position: absolute;
+   position: fixed;
    left: 0;
-   top: 100%;
+   top: 66px;
    width: 100vw;
    height: 100vh;
    background: rgba(0, 0, 0, 0);
    pointer-events: none;
    transition: .5s;
+   z-index: 99999;
 }

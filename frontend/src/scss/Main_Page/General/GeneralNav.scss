@@ -1,0 +1,43 @@
+@import '../../config';
+
+nav.general-nav {
+   background: #8A2BE2;
+
+   ul {
+      display: flex;
+      list-style: none;
+
+      li {
+         @include flex-c-c;
+         overflow: hidden;
+
+         a {
+            padding: 2em clamp(1.5em, 5vw, 2em);
+            transition: .3s;
+            color: white;
+            text-decoration: none;
+            display: block;
+            font-weight: 700;
+            font-size: clamp(.8rem, 3vw, 1rem);
+
+            &.popular {
+               color: rgb(255, 183, 183);
+            }
+            
+            &:hover {
+               background: #9938f3;
+   
+               transform: scale(1.2); 
+            }
+         }
+      }
+   }
+}
+
+@media (max-width:768px) {
+   nav.general-nav {
+      ul {
+         flex-direction: column;
+      }
+   }
+}

@@ -1,9 +1,14 @@
 import React from 'react'
+import SliderContainer from './Slider/SliderContainer'
+import GeneralNav from './General/GeneralNav'
 
 const MAIN_PAGE = () => {
    return (
-      <main style={{height: '500vh'}}>
-         main
+      <main className='main-page'>
+
+         <SliderContainer />
+         <GeneralNav />
+         
       </main>
    )
 }

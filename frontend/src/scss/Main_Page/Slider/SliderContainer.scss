@@ -1,0 +1,104 @@
+@import '../../config';
+
+section.image-slider-container {
+   margin-top: .7em;
+
+   h1 {
+      font-size: clamp(1.2rem, 4vw, 2.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      background: #8A2BE2;
+      color:rgb(255, 255, 255);
+      text-align: center;
+      padding: .6em 1em;
+      text-decoration: underline;
+   }
+
+   .image-wrap {
+      height: clamp(150px, 53vw, 500px);
+      @include flex-sb-c;
+
+      span.arrow {
+         width: 6%;
+         height: 100%;
+         @include flex-c-c;
+         transition: .3s;
+         cursor: pointer;
+
+         &:hover {
+            background: rgb(174, 194, 255);
+            svg { transform: scale(2); color: rgb(221, 132, 132); }
+         }
+
+         svg {
+            width: clamp(15px, 3vw, 35px);
+            height: clamp(15px, 3vw, 35px);
+            pointer-events: none;
+            transition: .3s;
+         }
+      }
+
+      figure {
+         height: 100%;
+         width: 88%;
+         position: relative;
+         overflow: hidden;
+
+         section.slider-timer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 5px;
+            background: white;
+            z-index: 9;
+            border: 1px solid black; border-top: 0;
+
+            div {
+               background: royalblue;
+               height: 100%;
+               width: 0%;
+            }
+         }
+
+         section.slider-buttons {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 8%;
+            z-index: 9;
+            display: flex;
+
+            span {
+               height: clamp(15px, 4vw, 25px);
+               width: clamp(15px, 4vw, 25px);
+               background: cornflowerblue;
+               border-radius: 50%;
+               margin: 0 .5em;
+               cursor: pointer;
+               transition: .2s;
+               border: 2px solid slateblue;
+
+               &.active {
+                  pointer-events: none;
+                  background: chocolate;
+                  border: 2px solid slateblue;
+               }
+
+               &:hover {
+                  background: royalblue;
+               }
+            }
+         }
+
+         div {
+            display: flex;
+
+            img {
+               width: 100%;
+               transform: translateY(-20%);
+            }
+         }
+      }
+   }
+}

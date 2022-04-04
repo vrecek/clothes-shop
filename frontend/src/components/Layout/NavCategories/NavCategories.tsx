@@ -63,6 +63,15 @@ const NavCategories = () => {
                womanFirstList={ women.underwear.secondList  } 
                text='Underwear' 
             />
+
+            <NavOneCategory 
+               manFirstList={ men.hats.firstList } 
+               manSecondList={ men.hats.secondList } 
+               womanSecondList={ women.hats.secondList } 
+               womanFirstList={ women.hats.secondList } 
+               text='Accessories' 
+            />
+            
          </ul>
       </nav>
    )
