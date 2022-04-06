@@ -1,0 +1,66 @@
+@import '../../config';
+
+section.product {
+   height: 100%;
+   width: clamp(160px, 25vw, 235px);
+   border: 1px solid royalblue;
+   border-radius: .2em;
+   margin-right: 1em;
+   flex-shrink: 0;
+   padding: .5em;
+   @include flex-sb-c;
+   flex-direction: column;
+   background: rgb(235, 235, 235);
+   position: relative;
+
+   h2 {
+      text-align: center;
+      font-size: clamp(.9rem, 2vw, 1.3rem);
+      height:16%;
+      width: 100%;
+      font-weight: 700;
+   }
+
+   section {
+      @include flex-c-c;
+      width: 100%;
+
+      h3.price {
+         color: rgb(0, 195, 0);
+         @include flex-c-c;
+         font-weight: 500;
+         font-size: clamp(1.1rem, 2vw, 1.5rem);
+      }
+   }
+
+   button {
+      padding: .5em 0;
+      width: 40%;
+      min-width: 80px;
+      display: block;
+      margin: 0 auto;
+      border: 1px solid royalblue;
+      background: royalblue;
+      color: white;
+      border-radius: .2em;
+      cursor: pointer;
+      transition: .3s;
+
+      &:hover {
+         background: coral;
+         border-color: coral;
+         transform: scale(1.2);
+      }
+
+      label { font-weight: 700; text-transform: uppercase; font-size: clamp(.8rem, 1.5vw, .9rem); }
+   }
+
+   figure {
+      height: 50%;
+      overflow: hidden;
+
+      img {
+         width: 100%;
+      }
+   }
+}
