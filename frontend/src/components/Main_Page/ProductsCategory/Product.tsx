@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../../css/Product.css'
-import img from '../../../images/prod1.png'
+import img from '../../../images/prod2.png'
 import Button from '../../Reusable/Button'
 import { FiDollarSign } from 'react-icons/fi'
 

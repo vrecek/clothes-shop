@@ -1,17 +1,22 @@
 import React from 'react'
 import '../../../css/TextImage.css'
-import Button from '../../Reusable/Button'
 import image from '../../../images/text1.png'
 import TextSection from './TextSection'
 import ImageSection from './ImageSection'
+import { TextImageType } from '../../../interfaces/text_image_interface'
 
-const TextImage = () => {
+const TextImage = ({ backColor, secColor, flexDirClass, title, text, buttonText, showIcons, imageSrc }: TextImageType) => {
    return (
-      <article className='text-image'>
+      <article style={{ backgroundColor: backColor }} className='text-image' id={ flexDirClass }>
 
-         <TextSection title='Lorem ipsum dolor' text='Proin gravida urna ante, non iaculis massa consequat non. Morbi porta metus molestie, accumsan sem sed, tempus dolor. Curabitur lobortis leo quis elit pretium' />
+         <TextSection 
+            backColor={ secColor }
+            title={ title }
+            text={ text }
+            buttonText={ buttonText }
+         />
 
-         <ImageSection image={ image } />
+         <ImageSection image={ imageSrc } showIcons={ showIcons } />
    
       </article>
    )

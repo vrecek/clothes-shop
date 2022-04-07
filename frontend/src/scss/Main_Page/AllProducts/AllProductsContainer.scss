@@ -1,0 +1,123 @@
+@import '../../config';
+
+.main-products-container {
+   width: calc(100% - 4px);
+   border: 5px solid #e47e00;
+   background-color: #f8f9d2;
+   background-image: linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%);
+   
+   section.all-prods-cont {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+   }
+
+   section.pages {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1em;
+
+      div {
+         width: clamp(30px, 10vw, 45px);
+         height: clamp(30px, 10vw, 45px);
+         @include flex-c-c;
+         border: 2px solid orange;
+         background: orangered;
+         cursor: pointer;
+         border-radius: .2em;
+         color: white;
+         margin: 0 .5em;
+         font-size: clamp(.7rem, 3.5vw, 1rem);
+         font-weight: 700;
+         transition: .3s;
+
+         &.active {
+            pointer-events: none;
+            background: brown;
+            border-color: brown;
+         }
+
+         &:hover {
+            background: orange;
+         }
+      }
+   }
+
+   article.one-product {
+      width: 300px;
+      max-width: 95%;
+      height: clamp(300px, 70vw, 460px);
+      border-radius: .2em;
+      border: 1px solid black;
+      background-color: #ffffff;
+      background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+      margin: 1em;
+      margin-bottom: 2em;
+      cursor: pointer;
+      transition: .3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &:hover {
+         background: #c1d2e3;
+         box-shadow: 0 0 5px black;
+
+         div { h4 { &:last-of-type { color: rgb(72, 180, 0); } } }
+
+         figure img {
+            transform: scale(.8);
+         }
+      }
+
+      section {
+         height: 20%;
+         padding: .5em;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+
+         h5 {
+            text-align: center;
+            font-size: 1rem;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            height: 60%;
+            padding: 0 .5em;
+         }
+
+         div {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            h4 {
+               font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+               font-size: clamp(1.3rem, 5vw, 1.4rem);
+               text-shadow: 0 0 1px black;
+               color:#404851;
+               @include flex-c-c;
+            }
+         }
+      }
+
+      figure {
+         height: 80%;
+         overflow: hidden;
+         @include flex-c-c;
+
+         img {
+            height: 100%;
+            transition: .3s;
+         }
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   .main-products-container {
+      article.one-product {
+         section { height: 30%; }
+         figure { height: 70%; }
+      }
+   }
+}

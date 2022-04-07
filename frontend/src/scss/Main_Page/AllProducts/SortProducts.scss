@@ -1,0 +1,66 @@
+@import '../../config';
+
+section.sort-products-bar {
+   background: #FF8C00;
+   padding: .5em 0;
+   display: flex;
+
+   div.select {
+      margin: 0 .5em;
+      width: 165px;
+      height: 60px;
+      outline: 0;
+      background: rgb(65, 105, 225);
+      color: white;
+      font-size: clamp(.75rem, 3vw, 1.1rem);
+      text-align: center;
+      border-radius: .2em;
+      border: 0;
+      cursor: pointer;
+      position: relative;
+
+      div.active {
+         @include flex-sb-c;
+         width: 100%;
+         height: 100%;
+         padding: 0 .5em;
+         text-transform: uppercase;
+         span { font-weight: 500; pointer-events: none; }
+         svg { width: clamp(18px, 4vw, 25px); height: clamp(18px, 4vw, 25px); pointer-events: none; transition: .3s; }
+      }
+
+      ul {
+         overflow: hidden;
+         display: none;
+         height: 0;
+         list-style: none;
+         width: 100%;
+         position: absolute;
+         left: 0;
+         top: 100%;
+         font-family: 'Padauk', sans-serif;
+         transition: .3s;
+
+         li {
+            background: royalblue;
+            height: 60px;
+            padding: 0 .5em;
+            display: flex;
+            align-items: center;
+            transition: .3s;
+
+            &:hover {
+               background: cornflowerblue;
+            }
+         }
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   section.sort-products-bar {
+      div.select {
+         margin: 0 .1em;
+      }
+   }
+}

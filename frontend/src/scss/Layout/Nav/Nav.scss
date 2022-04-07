@@ -11,6 +11,8 @@ nav.layout-nav {
    @include flex-sa-c;
    padding: .5em 0;
    position: relative;
+   width: 100%;
+   z-index: 999999;
 
    figure.nav-logo {
       height: 50px;

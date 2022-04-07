@@ -30,7 +30,7 @@ const CardContainer = () => {
          --counter
       }
 
-      prodDiv.style.transform = `translateX(-${ counter * prodInfo.width }px)`
+      prodDiv.style.transform = `translateX(-${ counter * (prodInfo.width / 2) }px)`
    }
 
    return (
