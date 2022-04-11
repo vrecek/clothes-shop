@@ -4,7 +4,7 @@ import { BiLogIn } from 'react-icons/bi'
 import { Navigation } from '../../../functions/UsefulClasses'
 import { AiOutlineHome } from 'react-icons/ai'
 
-const Nav_Icons = ({ menuReference }:{ menuReference: React.RefObject<HTMLElement> }) => {
+const NavIcons = ({ menuReference }:{ menuReference: React.RefObject<HTMLElement> }) => {
    const n = new Navigation()
 
    const showMenu = (e:React.MouseEvent) => {
@@ -39,4 +39,4 @@ const Nav_Icons = ({ menuReference }:{ menuReference: React.RefObject<HTMLElemen
    )
 }
 
-export default Nav_Icons
+export default NavIcons

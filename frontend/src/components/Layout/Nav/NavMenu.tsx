@@ -3,7 +3,7 @@ import '../../../css/NavMenu.css'
 import logo from '../../../images/logo.png'
 import { BiSearch } from 'react-icons/bi'
 
-const Nav_Menu = ({ menuReference }:{ menuReference: React.RefObject<HTMLElement> }) => {
+const NavMenu = ({ menuReference }:{ menuReference: React.RefObject<HTMLElement> }) => {
    return (
       <>
          <aside ref={ menuReference } className='nav-menu'>
@@ -17,14 +17,14 @@ const Nav_Menu = ({ menuReference }:{ menuReference: React.RefObject<HTMLElement
             </section>
 
             <ul>
-               <li>Sign in</li>
-               <li>Register</li>
+               <li> <a href='/credentials/sign-in'>Sign in</a> </li>
+               <li> <a href='/credentials/register'>Register</a> </li>
                <li className='li-line'></li>
-               <li>Profile</li>
+               <li> <a href='/'>Profile</a> </li>
                <li className='li-line'></li>
-               <li>Our policy</li>
-               <li>Contact</li>
-               <li>About</li>
+               <li> <a href='/'>Our policy</a> </li>
+               <li> <a href='/'>Contact</a> </li>
+               <li> <a href='/'>About</a> </li>
             </ul>
          </aside>
 
@@ -33,4 +33,4 @@ const Nav_Menu = ({ menuReference }:{ menuReference: React.RefObject<HTMLElement
    )
 }
 
-export default Nav_Menu
+export default NavMenu

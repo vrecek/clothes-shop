@@ -1,9 +1,9 @@
 import React from 'react'
 import '../../../css/Nav.css'
 import logo from '../../../images/logo.png'
-import Nav_Search from './Nav_Search'
-import Nav_Icons from './Nav_Icons'
-import Nav_Menu from './Nav_Menu'
+import NavSearch from './NavSearch'
+import NavIcons from './NavIcons'
+import NavMenu from './NavMenu'
 
 const Nav = () => {
    const menuRef = React.useRef<HTMLElement>(null)
@@ -13,7 +13,7 @@ const Nav = () => {
    window.addEventListener('scroll', () => {
       const nav = menuRef?.current?.parentElement as HTMLElement
 
-      if(scrl && window.scrollY >= scrlTop || window.scrollY <= 200) {
+      if((scrl && window.scrollY >= scrlTop) || window.scrollY <= 200) {
          scrl = false
          nav.style.position = 'relative'
 
@@ -33,11 +33,11 @@ const Nav = () => {
             <img src={ logo } alt='logo' />
          </figure>
 
-         <Nav_Search />
+         <NavSearch />
 
-         <Nav_Icons menuReference={ menuRef } />
+         <NavIcons menuReference={ menuRef } />
 
-         <Nav_Menu menuReference={ menuRef } />
+         <NavMenu menuReference={ menuRef } />
       </nav>
    )
 }

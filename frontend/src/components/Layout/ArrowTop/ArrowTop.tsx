@@ -4,8 +4,9 @@ import { BsFillArrowUpSquareFill } from 'react-icons/bs'
 const ArrowTop = () => {
    const arrowRef = React.useRef<HTMLDivElement>(null)
 
-   let show: boolean = false
    React.useEffect(() => {
+      let show: boolean = false
+      
       window.addEventListener('scroll', () => {
          const c = arrowRef.current as HTMLElement
 

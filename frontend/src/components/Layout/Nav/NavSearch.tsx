@@ -2,7 +2,7 @@ import React from 'react'
 import { BiSearch } from 'react-icons/bi'
 import { FaTimes } from 'react-icons/fa'
 
-const Nav_Search = () => {
+const NavSearch = () => {
    const setColor = (t: HTMLElement, searchIcon: HTMLElement, clr:'orange' | 'blue'): void => {
       if(clr === 'orange') {
          t.style.borderColor = 'rgb(255, 68, 0)'
@@ -75,4 +75,4 @@ const Nav_Search = () => {
    )
 }
 
-export default Nav_Search
+export default NavSearch

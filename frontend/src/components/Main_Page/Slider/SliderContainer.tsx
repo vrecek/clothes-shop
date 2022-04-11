@@ -136,7 +136,7 @@ const SliderContainer = () => {
                   <img src={ s3 } alt='product' />
 
                   <img src={ s1 } alt='product' />
-                  <img src={ s2 } />
+                  <img src={ s2 } alt='product' />
                   <img src={ s3 } alt='product' />
 
                   <img src={ s1 } alt='product' />

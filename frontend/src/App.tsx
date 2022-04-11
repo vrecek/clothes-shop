@@ -8,6 +8,7 @@ import ArrowTop from './components/Layout/ArrowTop/ArrowTop';
 import MAIN_PAGE from './components/Main_Page/MAIN_PAGE';
 import PRODUCT_PAGE from './components/Product_Page/PRODUCT_PAGE';
 import SIGNIN from './components/LoginRegister/SIGNIN';
+import REGISTER from './components/LoginRegister/REGISTER';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/product/:id' element={ <PRODUCT_PAGE /> } />
           
           <Route path='/credentials/sign-in' element={ <SIGNIN /> } />
+          <Route path='/credentials/register' element={ <REGISTER /> } />
 
         </Routes>
 

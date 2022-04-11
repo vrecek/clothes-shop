@@ -1,0 +1,138 @@
+@import '../config';
+
+main.register {
+   height: calc(100vh - 124px);
+   @include flex-c-c;
+
+   form {
+      width: 480px;
+      max-width: 100%;
+      border: 2px solid orangered;
+      background: rgb(246, 244, 244);
+      border-radius: .2em;
+
+      section.inputs {
+         padding: 0 1em;
+
+         button {
+            display: block;
+            margin: .5em auto 1em auto;
+            cursor: pointer;
+            padding: 1em 0;
+            width: 30%;
+            min-width: 120px;
+            outline: 0;
+            border: 0;
+            background: orangered;
+            border-radius: .5em;
+            transition: .3s;
+
+            label {
+               font-weight: 700;
+               color: white;
+               transition: .3s;
+               display: block;
+               font-size: clamp(1rem, 4vw, 1.1rem);
+            }
+
+            &:hover {
+               background: orange;
+               label { transform: scale(.9); }
+            }
+         }
+
+         section.radio {
+            display: flex;
+
+            div {
+               margin-right: 1em;
+               @include flex-c-c;
+
+               label {
+                  font-family: 'Padauk', sans-serif;
+                  margin-left: .2em;
+                  cursor: pointer;
+               }
+            }
+         }
+
+         section.check {
+            display: flex;
+            align-items: center;
+            
+            a { color: orangered; transition: .3s; text-decoration: none; &:hover { color: orange; } }
+
+            label {
+               font-family: 'Padauk', sans-serif;
+               margin-left: .2em;
+               font-size: clamp(.85rem, 4vw, 1rem);
+               cursor: pointer;
+            }
+         }
+
+         section {
+            position: relative;
+            margin-bottom: 1em;
+
+            input[type="text"] {
+               width: 100%;
+               padding: .7em .5em;
+               background: rgb(238, 238, 238);
+               border: 1px solid royalblue;
+               border-radius: .1em;
+               outline: 0;
+               font-size: clamp(.95rem, 4vw, 1.1rem);
+            }
+
+            label.txtlabel {
+               position: absolute;
+               left: .5em;
+               top: 50%;
+               transform: translateY(-50%);
+               pointer-events: none;
+               font-weight: 500;
+               color: rgba(0, 0, 0, 0.5);
+               transition: .3s;
+            }
+         }
+      }
+
+      section.icon {
+         @include flex-c-c;
+         flex-direction: column;
+         margin-bottom: 1em;
+         background: orangered;
+         color: white;
+         padding: .25em 0;
+
+         h1 {
+            font-weight: 500;
+            font-size: clamp(1rem, 5vw, 1.2rem);
+         }
+
+         span {
+            width: clamp(45px, 15vw, 60px);
+            height: clamp(45px, 15vw, 60px);
+            border-radius: 50%;
+            border: 2px solid orange;
+            @include flex-c-c;
+            background: orangered;
+
+            svg {
+               width: 90%;
+               height: 90%;
+            }
+         }
+      }
+   }
+}
+
+@media (max-width: 340px) {
+   main.register {
+      .captcha { 
+         display: flex;
+         justify-content: center;
+         transform: scale(.85);
+      }
+   }
+}

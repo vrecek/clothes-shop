@@ -38,7 +38,7 @@ const ProductText = () => {
             setSize(parseInt(x.textContent!))
          })
       }
-   }, [])
+   }, [d])
 
    return (
       <article className='product-text'>

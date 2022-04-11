@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../../css/TextImage.css'
-import image from '../../../images/text1.png'
 import TextSection from './TextSection'
 import ImageSection from './ImageSection'
 import { TextImageType } from '../../../interfaces/text_image_interface'

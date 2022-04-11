@@ -7,9 +7,9 @@ import WriteCommentStars from '../Opinions/WriteCommentStars'
 const ProductOpinions = () => {
    const starsDiv = React.useRef<HTMLDivElement>(null)
 
-   let currentStar: number = 0
-
    React.useEffect(() => {
+      let currentStar: number = 0
+
       for(let x of [...starsDiv.current?.children as HTMLCollectionOf<HTMLElement>]) {
          x.addEventListener('click', (e) => {
             const t = e.target as HTMLElement

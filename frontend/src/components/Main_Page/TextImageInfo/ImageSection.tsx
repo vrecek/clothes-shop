@@ -5,7 +5,6 @@ import { BiShoppingBag } from 'react-icons/bi'
 const ImageSection = ({ image, showIcons }: { image: string | string[], showIcons: boolean }) => {
    const imgType = typeof image
    
-   let counter = 0
    const changeImg = (e: React.MouseEvent, num: number) => {
       const t = e.target as HTMLElement
       const imgCont = t.parentElement?.parentElement?.children[0] as HTMLElement

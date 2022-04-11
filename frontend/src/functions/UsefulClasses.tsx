@@ -1,9 +1,6 @@
 /* --------------------------------------------------------- NAVIGATION ------------------------------------------------ */
 
 abstract class NavigationClass {
-
-   public constructor() {  }
-
    public abstract animateThreeLines(
       threeSpansContainer: HTMLElement, 
       showColor?: string,

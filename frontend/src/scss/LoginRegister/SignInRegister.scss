@@ -1,5 +1,176 @@
 @import '../config';
 
 main.sign-in {
-   background: red;
+   height: calc(100vh - 124px);
+   @include flex-c-c;
+
+   form {
+      width: 450px;
+      max-width: 100%;
+      border: 2px solid orangered;
+      background: rgb(246, 244, 244);
+      border-radius: .2em;
+
+      section.inputs {
+         padding: 1em;
+
+         a.register {
+            text-decoration: none;
+            color: #202020;
+            display: block;
+            margin-top: 1em;
+            text-align: center;
+            font-family: 'Padauk', sans-serif;
+            color: orangered;
+            font-weight: 600;
+            transition: .3s;
+
+            &:hover {
+               color: crimson;
+               transform: scale(.95);
+            }
+         }
+
+         button {
+            display: block;
+            margin: 0 auto;
+            padding: 1em 0;
+            outline: 0;
+            border: 2px solid orangered;
+            background: orangered;
+            text-transform: uppercase;
+            width: 40%;
+            min-width: 150px;
+            border-radius: .5em;
+            cursor: pointer;
+            transition: .3s;
+
+            label { font-weight: 700; font-size: clamp(1rem, 5vw, 1.3rem); color: white; transition: .3s; display: block; }
+
+            &:hover {
+               background: rgb(255, 145, 0);
+               label { transform: scale(.85); }
+            }
+         }
+
+         .wrap {
+            margin-bottom: 2em;
+
+            .check {
+               margin-top: .5em;
+               @include flex-sb-c;
+
+               div {
+                  @include flex-c-c;
+
+                  label {
+                     margin-left: .2em;
+                     font-family: 'Padauk', sans-serif;
+                     cursor: pointer;
+                     color: #202020;
+                     font-size: clamp(.9rem, 4vw, 1rem);
+
+                     &:hover { color: black; }
+                  }
+               }
+
+               a {
+                  text-decoration: none;
+                  color: orangered;
+                  font-family: 'Padauk', sans-serif;
+                  font-size: clamp(.9rem, 4vw, 1.1rem);
+                  position: relative;
+                  transition: .3s;
+                  font-weight: 600;
+
+                  &::before {
+                     content: '';
+                     position: absolute;
+                     top: 100%;
+                     left: 50%;
+                     transform: translateX(-50%) scale(0);
+                     transition: .3s;
+                     width: 100%;
+                     height: 1px;
+                     background: crimson;
+                  }
+
+                  &:hover {
+                     color: crimson;
+                     transform: scale(.9);
+
+                     &::before {
+                        transform: translateX(-50%) scale(1);
+                     }
+                  }
+               }
+            }
+         }
+
+         .rel {
+            position: relative;
+
+            label {
+               position: absolute;
+               left: .5em;
+               top: 50%;
+               transform: translateY(-50%);
+               pointer-events: none;
+               font-weight: 500;
+               color: rgba(0, 0, 0, 0.5);
+               transition: .3s;
+               font-size: clamp(.8rem, 4vw, 1rem);
+            }
+
+            span {
+               position: absolute;
+               right: .5em;
+               top: 50%;
+               cursor: pointer;
+               transform: translateY(-50%);
+               svg { width: 30px; height: 30px; pointer-events: none; }
+            }
+
+            input[type="text"],
+            input[type="password"] {
+               width: 100%;
+               border-radius: .1em;
+               outline: 0;
+               padding: .6em .5em;
+               border: 2px solid royalblue;
+               background: rgb(238, 238, 238);
+               font-size: clamp(1rem, 5vw, 1.3rem);
+               font-family: 'Padauk', sans-serif;
+            }
+         }
+      }
+
+      section.icon {
+         @include flex-c-c;
+         flex-direction: column;
+         margin-bottom: 2em;
+         background: orangered;
+         color: white;
+         padding: .5em 0;
+
+         h1 {
+            font-weight: 500;
+            font-size: clamp(1rem, 6vw, 1.6rem);
+         }
+
+         span {
+            width: clamp(50px, 15vw, 70px);
+            height: clamp(50px, 15vw, 70px);
+            border-radius: 50%;
+            border: 2px solid orange;
+            @include flex-c-c;
+            background: orangered;
+
+            svg {
+               width: 90%;
+               height: 90%;
+            }
+         }
+      }
+   }
 }
