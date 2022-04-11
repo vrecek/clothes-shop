@@ -38,7 +38,7 @@ const MAIN_PAGE = () => {
             flexDirClass='swap' 
             buttonText='About us'
             showIcons={ false }
-            imageSrc={ img3 }
+            imageSrc={ [img3, img2, img1] }
          />
 
          <Category type='Tops' />

@@ -1,0 +1,260 @@
+@import '../config';
+
+section.product-description-section {
+   article.main-container {
+      background: whitesmoke;
+      padding: 1.5em 1em;
+      width: 100%;
+      margin: 0 auto;
+      border-left: 1px solid orange;
+      border-right: 1px solid orange;
+
+      section.leave-comment {
+         width: 900px;
+         max-width: 100%;
+
+         section.btn {
+            @include flex-sb-c;
+            width: 85%;
+            margin: 0 0 0 auto;
+
+            div {
+               @include flex-c-c;
+            }
+
+            span.clickEle {
+               position: fixed;
+               width: 25px;
+               height: 25px;
+               background: rgba(65, 105, 225, 0.6);
+               box-shadow: 0 0 4px blue, 0 0 8px blue;
+               border-radius: 50%;
+               transform: scale(0);
+               animation: clickAnim .3s;
+
+               @keyframes clickAnim {
+                  0% { transform: scale(0); }
+                  100% { transform: scale(1); }
+               }
+            }
+
+            span:not(.clickEle) {
+               cursor: pointer;
+               color: rgb(152, 152, 152);
+               width: clamp(20px, 5vw, 35px);
+               height: clamp(20px, 5vw, 35px);
+
+               &.active {
+                  color: rgb(255, 183, 0);
+               }
+               
+               svg {
+                  width: 100%;
+                  height: 100%;
+                  pointer-events: none;
+               }
+            }
+
+            button {
+               margin-top: .1em;
+               padding: 1em clamp(.3em, 3.5vw, 2em);
+               background: none;
+               border: 0;
+               background: orangered;
+               color: white;
+               text-transform: uppercase;
+               border-radius: .5em;
+               cursor: pointer;
+               transition: .3s;
+               font-size: clamp(.7rem, 4vw, .85rem);
+
+               label { font-weight: 700; }
+
+               &:hover {
+                  background: orange;
+                  box-shadow: 0 0 3px royalblue, 0 0 6px royalblue;
+                  transform: scale(1.05);
+               }
+            }
+         }
+
+         section.area {
+            display: flex;
+            width: 100%;
+
+            figure {
+               width: clamp(85px, 20vw, 130px);
+               height: clamp(85px, 20vw, 130px);
+               border: 1px solid orangered;
+               border-right: 0;         
+
+               div {
+                  overflow: hidden;
+                  position: relative;
+                  height: 100%;
+                  width: 100%;
+
+                  img {
+                     height: 100%;
+                     @include abs-50-50;
+                  }
+               }
+
+               figcaption {
+                  width: 100%;
+                  text-align: center;
+                  word-break: break-all;
+                  font-size: clamp(.7rem, 3vw, .9rem);
+                  background: orangered;
+                  color: white;
+                  font-weight: 500;
+                  padding: .5em;
+               }
+   
+            }
+
+            textarea {
+               width: 86%;
+               height: clamp(150px, 50vw, 200px);
+               resize: none;
+               border: 1px solid orangered;
+               outline: 0;
+               background: rgb(255, 255, 255);
+               padding: 1em;
+               font-size: clamp(.9rem, 4vw, 1.2rem);
+               font-family: 'Padauk', sans-serif;
+               letter-spacing: .5px;
+            }
+         }
+      }
+
+      section.comments {
+         margin-top: 5em;
+
+         section.comments-container {
+            background: rgb(220, 218, 218);
+            padding: 2em;
+         }
+
+         div.comments-text {
+            position: relative;
+
+            p {
+               color:orangered;
+               font-weight: 700;
+               font-size: 1rem;
+               position: relative;
+               background: whitesmoke;
+               z-index: 5;
+               width: max-content;
+               padding: 0 .2em;
+               margin: 0 auto;
+            }
+
+            span {
+               position: absolute;
+               top: 50%;
+               transform: translateY(-50%);
+               left: 0;
+               width: 100%;
+               height: 2px;
+               background: orangered;
+            }
+         }
+      }
+
+      h5.opinion-desc {
+         font-weight: 700;
+         font-size: 1rem;
+         text-align: center;
+      }
+      p.opinion-desc {
+         font-size: .95rem;
+         font-weight: 400;
+         border-bottom: 1px solid #303030;
+         text-align: center;
+         padding-bottom: .5em;
+         margin-bottom: 2em;
+      }
+
+      h5.desc {
+         font-weight: 700;
+         text-transform: uppercase;
+         width: max-content;
+         color: #303030;
+         border-bottom: 1px solid #303030;
+         width: 65%;
+         margin: 0 auto .5em auto;
+      }
+      p.desc {
+         line-height: 3em;
+         font-family: 'Padauk', sans-serif;
+         width: 65%;
+         margin: 0 auto;
+      }
+   }
+
+   ul.nav-select {
+      display: flex;
+      list-style: none;
+      border: 2px solid orange;
+      background: orange;
+
+      li {
+         padding: 1.3em 0;
+         width: 180px;
+         text-align: center;
+         border-right: 2px solid rgb(255, 175, 27);
+         font-weight: 500;
+         font-size: 1rem;
+         letter-spacing: -1px;
+         color: white;
+         text-shadow: 0 0 1px black;
+         text-transform: uppercase;
+         cursor: pointer;background: rgb(255, 68, 0);
+         transition: .3s;
+
+         &.active {
+            pointer-events: none;
+            background: royalblue;
+         }
+
+         &:hover {
+            background: rgb(206, 55, 0);
+         }
+
+         &:last-child { border: 0; }
+      }
+   }
+}
+
+@media (max-width: 768px) {
+   section.product-description-section {
+      article.main-container {
+         padding: 1.5em .2em;
+
+         section.comments {
+            section.comments-container {
+               padding: 0;
+            }      
+         }
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   section.product-description-section {
+      article.main-container {
+         section.leave-comment {
+            section.btn { width: calc(100% - clamp(85px, 20vw, 130px));  }
+            section.area {
+               textarea {
+                  width: calc(100% - clamp(85px, 20vw, 130px)); 
+                  padding: .2em;
+               }
+            }
+         }
+      }
+   }
+}
+

@@ -1,0 +1,44 @@
+@import '../config';
+
+.product-details {
+   display: flex;
+   justify-content: center;
+
+   table {
+      border-collapse: collapse;
+      width: 750px;
+      max-width: 100%;
+
+      tr {
+         background: rgb(220, 220, 220);
+         
+         &:nth-child(even) {
+            background: rgb(210, 210, 210);
+         }
+
+         td {
+            width: 90%;
+            padding: 1.5em 1em;
+            text-align: right;
+
+            &:first-child {
+               text-transform: uppercase;
+               font-weight: 500;
+               width: 15%;
+               background: rgb(83, 119, 227);
+               color: white;
+               text-align: center;
+               font-size: clamp(.85rem, 3vw, 1rem);
+            }
+
+            &:nth-child(2) {
+               width: 85%;
+               padding-right: clamp(1em, 5vw, 2em);
+               font-weight: 600;
+               font-family: 'Padauk', sans-serif;
+               font-size: clamp(1rem, 4vw, 1.15rem);
+            }
+         }
+      }
+   }
+}

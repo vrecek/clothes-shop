@@ -99,6 +99,7 @@ nav.layout-nav {
             content: attr(data-text);
             left: 50%;
             transform: translateX(-50%);
+            white-space: nowrap;
             top: -100%;
             background: white;
             border-radius: .2em;

@@ -1,0 +1,124 @@
+@import '../config';
+
+article.comment {
+   display: flex;
+   background: rgb(235, 235, 235);
+   border-radius: .15em;
+   border: 1px solid orangered;
+   padding: 1em;
+   margin-bottom: 2em;
+   width: 865px;
+   max-width: 100%;
+
+   figure {
+      width: clamp(65px, 20vw, 100px);
+      height: clamp(65px, 20vw, 100px);
+      border-radius: 50%;
+      background: red;
+      overflow: hidden;
+      position: relative;
+      margin-right: 1em;
+
+      img {
+         @include abs-50-50;
+         height: 100%;
+      }
+   }
+
+   section {
+      width: 80%;
+
+      section.text {
+         margin: 1em 0;
+         width: 100%;
+
+         p {
+            font-family: 'Padauk', sans-serif;
+            font-size: clamp(.85rem, 3vw, 1rem);
+         }
+      }
+
+      section.rate {
+         display: flex;
+
+         span {
+            display: flex;
+            align-items: center;
+            margin-right: 1em;
+            transition: .3s;
+            cursor: pointer;
+
+            h6 {
+               font-size: clamp(1rem, 3vw, 1.1rem);
+               font-weight: 500;
+            }
+
+            svg {
+               width: 25px;
+               height: 25px;
+               pointer-events: none;
+               transition: .3s;
+            }
+
+            $clrs: (
+               1: 'rgb(0, 235, 0)',
+               2: 'rgb(255, 0, 0)'
+            );
+
+            @each $i, $x in $clrs {
+               &:nth-child(#{$i}) {
+                  &:hover {
+                     svg {
+                        color: #{$x};
+                     }
+                     transform: scale(1.2);
+                  }
+               }
+            }
+         }
+      }
+
+      section.user-info {
+         display: flex;
+         font-size: .9rem;
+         align-items: center;
+         width: 100%;
+
+         h4 {
+            font-weight: 500;
+         }
+
+         span {
+            color: rgb(210, 210, 210);
+
+            &.active {
+               color: goldenrod;         
+            }
+         }
+
+         h6 {
+            margin: 0 .5em;
+         }
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   article.comment {
+      padding: 1em .5em;
+
+      section {
+         width: 77%;
+      }
+
+      section.user-info {
+         flex-direction: column;
+         justify-content: flex-start;
+         align-items: flex-start;
+      }
+
+      figure {
+         margin-right: .5em;
+      }
+   }
+}

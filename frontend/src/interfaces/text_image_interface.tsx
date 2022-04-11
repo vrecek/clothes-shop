@@ -6,7 +6,7 @@ export interface TextImageType {
    text: string,
    buttonText: string,
    showIcons: boolean,
-   imageSrc: string
+   imageSrc: string | string[]
 }
 
 export interface TextSectionType {

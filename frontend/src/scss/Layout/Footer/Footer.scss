@@ -3,6 +3,7 @@
 footer.layout-footer {
    background: #e7e2e2;
    padding: 5em 0;
+   border-top: 1px solid #e47e00;
 
    article {
       @include flex-sb-c;

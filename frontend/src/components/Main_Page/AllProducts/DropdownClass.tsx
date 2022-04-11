@@ -10,7 +10,7 @@ export default class DropDown {
    private activeColors?: ElementColors
    private defaultColors?: ElementColors
 
-   private changeColors(element: HTMLElement, isActive: boolean) {
+   private changeColors(element: HTMLElement, isActive: boolean): void {
       if(!this.defaultColors) {
          const clr = window.getComputedStyle(element, null).getPropertyValue('color')
          const back = window.getComputedStyle(element, null).getPropertyValue('background-color')
@@ -29,12 +29,16 @@ export default class DropDown {
       }
    }
 
+   private filterExpand(x: string): boolean {
+      if(/[0-9.]/ig.test(x)) return true
+
+      return false
+   }
+
    public constructor(activeColors?:ElementColors) {
       this.active = false
       this.activeColors = activeColors
    }
-
-   /* --! PADDING li BUG !---! USE HEIGHT !-- */
 
    /*
       list MUST BE:
@@ -49,16 +53,16 @@ export default class DropDown {
 
       hiddenList.style.height = 'auto'
       hiddenList.style.display = 'block'
-
+      
       const height: number =  parseFloat(
                                  window.getComputedStyle(hiddenList, null).getPropertyValue('height')
                                  .split('')
-                                 .filter(x => isFinite( parseInt(x) ))
+                                 .filter(x => this.filterExpand(x) )
                                  .join('')
                               )
 
       hiddenList.style.height = '0'
-
+         
       setTimeout(() => {
          hiddenList.style.height = `${ height }px`
       }, 5);

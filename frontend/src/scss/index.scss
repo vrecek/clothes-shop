@@ -1,5 +1,6 @@
 // font-family: 'Padauk', sans-serif;
 // font-family: 'Inter', sans-serif;
+@import './config';
 
 * {
    margin: 0;
@@ -9,7 +10,26 @@
    scroll-behavior: smooth;
 }
 
-div.App { overflow: hidden; }
+// div.App { overflow-x: hidden; }
+
+aside.scrolltop {
+   position: fixed;
+   width: 30px;
+   height: 30px;
+   right: 10px;
+   bottom: 10px;
+   background: orangered;
+   color: white;
+   @include flex-c-c;
+   cursor: pointer;
+   opacity: 0;
+   pointer-events: none;
+   transition: .3s;
+
+   svg { width: 60%; height: 60%; transition: .3s; }
+
+   &:hover svg { height: 80%; width: 80%; color:aquamarine; }
+}
 
 body {
    background: rgb(230, 230, 230);
@@ -27,6 +47,10 @@ body {
       width: 100%;
       background: cornflowerblue;
    }
+}
+
+@media (max-width:480px) {
+   div.App { overflow-x: hidden; }
 }
 
 /*

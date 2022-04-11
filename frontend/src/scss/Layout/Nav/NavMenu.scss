@@ -20,14 +20,15 @@ aside.nav-menu {
       height: 60px;
       padding: 1em 0;
       background: rgb(236, 236, 236);
+      justify-content: center;
       
       input {
          width: 80%;
-         border-radius: .2em;
+         border-radius: 2em;
          border: 2px solid orangered;
-         background: orangered;
+         background: rgb(255, 64, 0);
          outline: 0;
-         padding-left: .5em;
+         padding-left: 1em;
          font-family: 'Padauk', sans-serif;
          font-size: 1rem;
          font-weight: 600;
@@ -35,8 +36,6 @@ aside.nav-menu {
       }
 
       span {
-         width: 10%;
-         height: 100%;
          @include flex-c-c;
 
          svg { width: 20px; height: 20px; }

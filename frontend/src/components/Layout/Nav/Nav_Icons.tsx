@@ -1,6 +1,6 @@
 import React from 'react'
 import { FiShoppingCart } from 'react-icons/fi'
-import { BiUser } from 'react-icons/bi'
+import { BiLogIn } from 'react-icons/bi'
 import { Navigation } from '../../../functions/UsefulClasses'
 import { AiOutlineHome } from 'react-icons/ai'
 
@@ -28,7 +28,7 @@ const Nav_Icons = ({ menuReference }:{ menuReference: React.RefObject<HTMLElemen
       <section className='nav-icons'>
          <a data-text='Homepage' href='/'> <AiOutlineHome /> </a>
          <a data-text='Basket' href='/'> <FiShoppingCart /> </a>
-         <a data-text='User' href='/'> <BiUser /> </a>
+         <a data-text='Sign in' href='/credentials/sign-in'> <BiLogIn /> </a>
 
          <div onClick={ showMenu }>
             <span></span>
