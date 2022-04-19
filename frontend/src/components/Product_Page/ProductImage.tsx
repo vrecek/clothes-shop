@@ -1,13 +1,13 @@
 import React from 'react'
 import img from '../../images/prod1.png'
 
-const ProductImage = () => {
+const ProductImage = ({ src }: { src: string }) => {
    return (
       <aside className='product-image'>
 
          <figure>
 
-            <img src={ img } alt='Product' />
+            <img src={ src } alt='Product' />
 
          </figure>
 

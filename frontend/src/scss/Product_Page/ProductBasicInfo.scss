@@ -86,13 +86,10 @@ section.first-section {
             }
 
             span {
-               // color: royalblue;
                margin-left: 1em;
                width: 20px;
                height: 20px;
                border-radius: 50%;
-               background: royalblue;
-               // font-weight: 700;
             }
          }
       }
@@ -251,7 +248,7 @@ section.first-section {
    }
 
    aside.product-image {
-      height: calc(100vh - 124px);
+      height: $calcHeight;
       width: 40%;
       position: sticky;
       top: 1em;

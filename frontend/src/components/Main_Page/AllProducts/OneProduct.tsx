@@ -1,19 +1,24 @@
 import React from 'react'
-import img from '../../../images/prodtest.png'
 import { CgDollar } from 'react-icons/cg'
+import { MainMenuProduct } from '../../../interfaces/product_interface'
 
-const OneProduct = ({ image, name, price, id }: any) => {
+const OneProduct = ({ imageString, name, brand, price, _id }: MainMenuProduct) => {
+   const redirectProd = () => window.location.href = `/product/${ _id }`
+
    return (
-      <article className='one-product'>
+      <article onClick={ redirectProd } className='one-product'>
          <figure>
-            <img src={ img } alt='product' />
+            <img src={ imageString } alt='product' />
          </figure>
 
          <section>
-            <h5>Lorem ipsum dolor is amtd sa dsa d ad dsa d das</h5>
+            <div className='names'>
+               <h6>{ brand }</h6>
+               <h5>{ name }</h5>
+            </div>
 
-            <div>
-               <h4>109 <CgDollar /> </h4>
+            <div className='price'>
+               <h4>{ price } <CgDollar /> </h4>
             </div>
          </section>
       </article>

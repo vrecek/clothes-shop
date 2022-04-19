@@ -1,4 +1,7 @@
 $light-background: rgb(220, 220, 220);
+$calcHeight: calc(100vh - 125px);
+$white-clr: #dfdfdf;
+$grey-clr: #959595;
 
 @mixin flex-sa-c {
    display: flex;

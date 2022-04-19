@@ -1,0 +1,268 @@
+@import '../config';
+
+main.add-product {
+   h1 {
+      font-weight: 500;
+      text-align: center;
+      color: $white-clr;
+   }
+
+   h3 {
+      font-size: .8rem;
+      color: crimson;
+      text-align: center;
+      margin-bottom: 1em;
+   }
+
+   article {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+
+      svg { color: $grey-clr; }
+
+      input[type="file"] { color: $white-clr; }
+
+      h5.true, 
+      h5.false {
+         width: max-content;
+         padding:1em;
+         color: white;
+         @include abs-50-50;
+         position: fixed;
+         z-index: 9999;
+         font-size: 1.2rem;
+         animation: resh5 .5s;
+         animation-delay: 1.5s;
+
+         @keyframes resh5 {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+         }
+      }
+
+      h5.false { background: red; }
+      h5.true { background: green; }
+
+      form.wrap {
+         width: 50%;
+
+         section.select.sub {
+            ul {
+               li {
+                  padding: .5em 1em;
+                  font-size: .9rem;
+               }
+            }
+         }
+
+         section.select {
+            position: relative;
+
+            svg { pointer-events: none; }
+
+            label { 
+               font-weight: 500;
+               font-size: .8rem;
+               color: $grey-clr;
+            }
+
+            div {
+               height: 100%;
+               width: 100%;
+               cursor: pointer;
+               padding: 1em;
+               @include flex-sb-c;
+               background: #151515;
+               border: 1px solid orangered;
+               margin-bottom: 3em;
+               border-radius: .2em;
+               color: $white-clr;
+               
+               h5 {
+                  font-size: 1rem;
+                  font-weight: 400;
+                  pointer-events: none;
+               }
+
+               span { @include flex-c-c; transition: .5s; }
+            }
+                  
+            ul {
+               overflow: hidden;
+               height: 0;
+               display: none;
+               list-style: none;
+               width: 100%;
+               z-index: 99;
+               position: absolute;
+               top: 100%;
+               left: 0;
+               transition: .5s;
+               border: 1px solid orangered;
+               border-top: 0;
+
+               li {
+                  padding: 1em;
+                  background: #151515;
+                  color: $grey-clr;
+                  cursor: pointer;
+                  transition: .3s;
+
+                  &:hover {
+                     background-color: #606060;
+                     color: white;
+                  }
+               }
+            }
+         }
+
+         button {
+            width: 150px;
+            padding: .8em 0;
+            font-size: 1.1rem;
+            margin: 1em auto .5em auto;
+            display: block;
+            background: royalblue;
+            border: 0;
+            cursor: pointer;
+            color: white;
+            transition: .3s;
+            border-radius: .15em;
+            position: relative;
+
+            &:hover {
+               background: goldenrod;
+            }
+
+            label { font-weight: 700; }
+         }
+
+         div:not(.select-div) {
+            margin-bottom: 3em;
+            position: relative;
+
+            section.price {
+               position: relative;
+
+               span {
+                  position: absolute;
+                  left: 100%;
+                  top: 50%;
+                  transform: translateY(-50%);
+
+                  svg { width: 30px; height: 30px; }
+               }
+            }
+
+            section.icons {
+               position: absolute;
+               right: 0;
+               bottom: 0;
+
+               span { margin: 0 .5em; cursor: pointer; svg { pointer-events: none; } }
+            }
+
+            input { display: block; color: $white-clr; }
+
+            section.box {
+
+               input {
+                  width: 200px;
+                  background: #151515;
+                  border: 1px solid orangered;
+                  margin-bottom: .5em;
+                  padding: .5em 1em;
+                  border-radius: .2em;
+                  outline: 0;
+                  font-size: 1rem;
+               }
+            }
+
+            label {
+               font-weight: 500;
+               font-size: .8rem;
+               color: $grey-clr;
+            }
+
+            input.textregular,
+            textarea {
+               display: block;
+               width: 100%;
+               font-size: 1rem;
+               border: 1px solid orangered;
+               outline: 0;
+               padding: .75em;
+               border-radius: .2em;
+               font-family: 'Padauk', sans-serif;
+               background: #151515;
+               color: $white-clr;
+            }
+
+            textarea {
+               resize: none;
+               height: 300px;
+            }
+         }
+      }
+
+      aside {
+         width: 25%;
+         background: #404040;
+         position: sticky;
+         top: 124px;
+         height: max-content;
+         padding: 1em 0;
+         border-radius: .2em;
+
+         figure {
+            aspect-ratio: 1;
+            width: 75%;
+            overflow: hidden;
+            margin: 0 auto;
+            position: relative;
+
+            img {
+               width: 100%;
+               @include abs-50-50;
+            }
+         }
+
+         h2 {
+            text-align: center;
+            font-size: .95rem;
+            font-weight: 500;
+            margin-bottom: 1em;
+            color: $white-clr;
+         }
+      }
+   }
+}
+
+@media (max-width: 768px) {
+   main.add-product {
+      article {
+         flex-direction: column-reverse;
+         
+         aside {
+            position: static;
+            margin: 2em auto;
+            width: 180px;
+         }
+
+         form.wrap {
+            width: 100%;
+
+            div:not(.select-div) {
+               section.price {
+                  span {
+                     top: 100%;
+                     left: 50%;
+                     transform: translateX(-50%);
+                  }
+               }
+            }
+         }
+      }
+   }
+}

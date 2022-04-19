@@ -1,12 +1,23 @@
 import React from 'react'
 import '../../css/Register.css'
 import EntryIcon from './EntryIcon'
-import { AiOutlineUserAdd } from 'react-icons/ai'
+import { AiOutlineUserAdd, AiOutlineEye } from 'react-icons/ai'
 import Button from '../Reusable/Button'
 import ReCaptcha from 'react-google-recaptcha'
+import Fetches, { PostInterface } from '../../functions/Fetches'
+import Loading from '../../functions/Loading'
+import gif from '../../images/load.gif'
+import isLoggedRedirect from '../../functions/IsAuthed'
 
 const REGISTER = () => {
    const captchaRef = React.useRef<any>(null)
+   const [regResult, setRegResult] = React.useState<{ success: boolean, msg: string[] } | null>(null)
+
+   const f = new Fetches()
+
+   React.useEffect(() => {
+      isLoggedRedirect()
+   }, [])
 
    const focusLabel = (e: React.ChangeEvent) => {
       const t = e.target as HTMLInputElement
@@ -50,18 +61,68 @@ const REGISTER = () => {
       e.preventDefault()
 
       const t = e.target as HTMLFormElement
+
+      const load = new Loading(gif)
+      load.appendImage(t)
+   
+      const userBody = [...t.elements as any].map(x => elementsMap(x))
+
+      try {
+         const data: PostInterface = await f.post(process.env.REACT_APP_API_REGISTER!, userBody)
+
+         if(data.status) {
+            for(let x of [...t.elements as HTMLCollectionOf<HTMLInputElement>]) {
+               if(x.type === 'text') x.value = ''
+               else if(x.type === 'radio' || x.type === 'checkbox') x.checked = false
+            }
+         }
+         
+         captchaRef.current.reset()
+
+         setRegResult({ msg: data.response, success: data.status })
+
+         if(data.status) window.location.href = '/credentials/sign-in'
+  
+      }catch(err: any){
+         setRegResult({ success: false, msg: [err.message + '. Try again later'] })
+
+      }finally { setTimeout(() => setRegResult(null), 4000); load.removeImage() }
+   }
+
+   const togglePassVisibility = (e: React.MouseEvent) => {
+      const t = e.target as HTMLElement
+      const inp = t.parentElement!.children[0] as HTMLInputElement
       
-      const [username, mail, pass, confpass, m, f, o, check, captcha] = [...t.elements as any].map(x => elementsMap(x))
+      t.classList.toggle('visibilityToggle')
 
-      // const res = await fetch('/api')
-      // const data = await res.json()
+      if(t.classList.contains('visibilityToggle')) {
+         const span = document.createElement('span')
+         
+         t.appendChild(span)
+         inp.type = 'text'
+         
+         return
+      }
 
+      for(let x of t.children) {
+         if(x.tagName !== 'SPAN') continue
+
+         x.remove()
+         inp.type = 'password'
+      }
    }
 
    return (
       <main className='register'>
          <form onSubmit={ submitUser }>
             <EntryIcon text='Create an account' icon={ <AiOutlineUserAdd /> } />
+
+            {
+               regResult && 
+               <section className={ regResult.success.toString() }> 
+                  { regResult.msg.map(x => ( <h2 key={ x }>{ x }</h2> )) }
+               </section>
+            }
 
             <section className='inputs'>
                <section>
@@ -75,13 +136,15 @@ const REGISTER = () => {
                </section>
 
                <section>
-                  <input onFocus={ focusLabel } onBlur={ blurLabel } type='text' />
+                  <input onFocus={ focusLabel } onBlur={ blurLabel } type='password' />
                   <label className='txtlabel'>Password</label>
+                  <span onClick={ togglePassVisibility } className='eye'> <AiOutlineEye /> </span>
                </section>
 
                <section>
-                  <input onFocus={ focusLabel } onBlur={ blurLabel } type='text' />
+                  <input onFocus={ focusLabel } onBlur={ blurLabel } type='password' />
                   <label className='txtlabel'>Confirm password</label>
+                  <span onClick={ togglePassVisibility } className='eye'> <AiOutlineEye /> </span>
                </section>
 
                <section className='radio'>

@@ -3,8 +3,11 @@ import { FiShoppingCart } from 'react-icons/fi'
 import { BiLogIn } from 'react-icons/bi'
 import { Navigation } from '../../../functions/UsefulClasses'
 import { AiOutlineHome } from 'react-icons/ai'
+import { MdOutlineManageAccounts } from 'react-icons/md'
+import { isAuthData } from '../../../functions/IsAuthed'
+import UserType from '../../../interfaces/user_interface'
 
-const NavIcons = ({ menuReference }:{ menuReference: React.RefObject<HTMLElement> }) => {
+const NavIcons = ({ menuReference, user }:{ menuReference: React.RefObject<HTMLElement>, user: UserType | null }) => {
    const n = new Navigation()
 
    const showMenu = (e:React.MouseEvent) => {
@@ -28,7 +31,13 @@ const NavIcons = ({ menuReference }:{ menuReference: React.RefObject<HTMLElement
       <section className='nav-icons'>
          <a data-text='Homepage' href='/'> <AiOutlineHome /> </a>
          <a data-text='Basket' href='/'> <FiShoppingCart /> </a>
-         <a data-text='Sign in' href='/credentials/sign-in'> <BiLogIn /> </a>
+         {
+            !user 
+            ?
+            <a data-text='Sign in' href='/credentials/sign-in'> <BiLogIn /> </a>
+            :
+            <a data-text='Account' href='/'> <MdOutlineManageAccounts /> </a> 
+         }
 
          <div onClick={ showMenu }>
             <span></span>

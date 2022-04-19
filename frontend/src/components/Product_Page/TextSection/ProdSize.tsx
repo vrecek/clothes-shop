@@ -1,7 +1,8 @@
 import React from 'react'
 import { IoMdArrowDropdown } from 'react-icons/io'
+import { SizeType } from '../../../interfaces/product_interface'
 
-const ProdSize = ({ expandMenuFunc, sizeActual, listReference }: any) => {
+const ProdSize = ({ expandMenuFunc, sizeActual, listReference, sizes }: SizeType) => {
    return (
       <section className='size'>
          <h4>Select size: </h4>
@@ -13,12 +14,11 @@ const ProdSize = ({ expandMenuFunc, sizeActual, listReference }: any) => {
             </div>
 
             <ul ref={ listReference }>
-               <li>35</li>
-               <li>36</li>
-               <li>37</li>
-               <li>38</li>
-               <li>39</li>
-               <li>40</li>
+               {
+                  sizes.map(x => (
+                     <li key={ x }>{ x }</li>
+                  ))
+               }
             </ul>
          </section>
       </section>

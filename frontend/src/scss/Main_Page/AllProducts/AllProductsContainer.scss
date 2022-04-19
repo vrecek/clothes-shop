@@ -60,13 +60,12 @@
       justify-content: space-between;
 
       &:hover {
-         background: #c1d2e3;
          box-shadow: 0 0 5px black;
 
          div { h4 { &:last-of-type { color: rgb(72, 180, 0); } } }
 
          figure img {
-            transform: scale(.8);
+            transform: scale(.9);
          }
       }
 
@@ -78,23 +77,29 @@
          justify-content: space-between;
 
          h5 {
-            font-size: clamp(.95rem, 4vw, 1.1rem);
-            height: 50%;
-            margin: .5em 0;
+            font-size: clamp(.9rem, 4vw, 1.1rem);
             font-weight: 500;
+            color: #101010;    
          }
 
-         div {
+         h6 {
+            font-size: .85rem;
+            font-weight: 700;
+            color: #353535;
+         }
+
+         div.price {
             display: flex;
             align-items: center;
             justify-content: flex-start;
 
             h4 {
                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-               font-size: clamp(1.3rem, 5vw, 1.5rem);
+               font-size: clamp(1.1rem, 5vw, 1.5rem);
                text-shadow: 0 0 1px black;
                color:#29292d;
                @include flex-c-c;
+               transition: .3s;
             }
          }
       }
@@ -105,7 +110,7 @@
          @include flex-c-c;
 
          img {
-            height: 100%;
+            width: 100%;
             transition: .3s;
          }
       }

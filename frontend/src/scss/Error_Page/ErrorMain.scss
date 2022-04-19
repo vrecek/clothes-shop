@@ -1,0 +1,79 @@
+@import '../config';
+
+main.main-error-page {
+   height: $calcHeight;
+   @include flex-c-c;
+   background-color: #ffffff;
+background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+
+
+   section.err-icon {
+      width: max-content;
+      @include flex-c-c;
+
+      svg {
+         width: clamp(100px, 25vw, 220px);
+         height: auto;
+         color: goldenrod;
+         filter: drop-shadow(0 0 1px black);
+      }
+   }
+
+   section.err-text {
+      width: 450px;
+      margin-left: 1em;
+
+      p {
+         margin: 1.5em 0;
+         padding: 0 .3em;
+         font-family: 'Padauk', sans-serif;
+         font-size: clamp(.85rem, 4vw, 1rem);
+      }
+
+      button {
+         background: none;
+         border: 2px solid royalblue;
+         color: royalblue;
+         border-radius: 2em;
+         padding: .9em 0;
+         width: 150px;
+         cursor: pointer;
+         transition: .3s;
+
+         label { font-size: clamp(.9rem, 5vw, 1.2rem); font-weight: 700; transition: .3s;  }
+
+         &:hover {
+            border-radius: .2em;
+            background: cornflowerblue;
+            label { color: white; }
+         }
+      }
+
+      h2 {
+         font-weight: 700;
+         font-size: 1.1rem;
+
+         span {
+            color: rgb(223, 25, 25);
+            font-weight: 700;
+            font-size: 2rem;
+            text-shadow: 0 0 2px black;
+         }
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   main.main-error-page {
+      flex-direction: column;
+      height: auto;
+      padding: 3em 0;
+
+      section.err-text {
+         width: 100%;
+         margin: 0;
+         padding: 0 .5em;
+         text-align: center;
+      }
+   }
+}

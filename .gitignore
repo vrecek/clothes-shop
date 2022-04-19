@@ -8,6 +8,8 @@ node_modules
 css
 backend
 .env
+Fetches.tsx
+BCOPY
 
 # testing
 /coverage

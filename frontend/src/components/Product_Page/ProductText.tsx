@@ -8,11 +8,12 @@ import ProdSize from './TextSection/ProdSize'
 import ProdColor from './TextSection/ProdColor'
 import ProdAvailable from './TextSection/ProdAvailable'
 import ProdDesc from './TextSection/ProdDesc'
+import ProductType from '../../interfaces/product_interface'
 
-const ProductText = () => {
+const ProductText = ({ price, brand, name, size, colors, description, inStock }: ProductType) => {
    const listRef = React.useRef<HTMLUListElement>(null)
 
-   const [size, setSize] = React.useState<number>(0)
+   const [currSize, setSize] = React.useState<string>('0')
 
    const d = new DropDown()
    const expandMenu = (e: React.MouseEvent) => {
@@ -35,26 +36,26 @@ const ProductText = () => {
             d.switchActive()
             d.shrinkMenu(x.parentElement!.parentElement!, x.parentElement!, .5)
 
-            setSize(parseInt(x.textContent!))
+            setSize(x.textContent!)
          })
       }
    }, [d])
 
    return (
       <article className='product-text'>
-         <h2>Product brand</h2>
+         <h2>{ brand }</h2>
 
-         <h1>Product name Lorem Ispm dolor fdsd fd  dsfdfd</h1>
+         <h1>{ name }</h1>
 
          <ProdStars />
 
-         <ProdPrice />
+         <ProdPrice price={ price } />
 
-         <ProdDesc />
+         <ProdDesc desc={ description } />
 
-         <ProdSize expandMenuFunc={ expandMenu } sizeActual={ size } listReference={ listRef } />
+         <ProdSize sizes={ size } expandMenuFunc={ expandMenu } sizeActual={ currSize } listReference={ listRef } />
 
-         <ProdColor />
+         <ProdColor colors={ colors } />
 
          <ProdAvailable />
 

@@ -52,7 +52,8 @@ aside.nav-menu {
          cursor: pointer;
          transition: .4s;
 
-         a {
+         a,
+         &.li-logout {
             color: black;
             text-decoration: none;
             display: block;
@@ -62,6 +63,14 @@ aside.nav-menu {
          &:hover {
             background: rgb(255, 87, 25);
             a { color: white; }
+         }
+
+         &.adm-panel {
+            a { text-transform: uppercase; }
+         }
+
+         &.li-logout {
+            color: red;
          }
       }
 

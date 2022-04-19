@@ -4,11 +4,18 @@ import logo from '../../../images/logo.png'
 import NavSearch from './NavSearch'
 import NavIcons from './NavIcons'
 import NavMenu from './NavMenu'
+import { isAuthData } from '../../../functions/IsAuthed'
+import UserType from '../../../interfaces/user_interface'
 
 const Nav = () => {
+   const [user, setUser] = React.useState<UserType | null>(null)
    const menuRef = React.useRef<HTMLElement>(null)
    let scrlTop: number = 0
    let scrl: boolean = true
+
+   React.useEffect(() => {
+      isAuthData(setUser)
+   }, [])
 
    window.addEventListener('scroll', () => {
       const nav = menuRef?.current?.parentElement as HTMLElement
@@ -35,9 +42,9 @@ const Nav = () => {
 
          <NavSearch />
 
-         <NavIcons menuReference={ menuRef } />
+         <NavIcons user={ user } menuReference={ menuRef } />
 
-         <NavMenu menuReference={ menuRef } />
+         <NavMenu user={ user } menuReference={ menuRef } />
       </nav>
    )
 }

@@ -1,44 +1,52 @@
 import React from 'react'
 import '../../../css/ProductDetails.css'
+import ProductType from '../../../interfaces/product_interface'
 
-const ProductDetails = () => {
+const ProductDetails = ({ prodData }: { prodData: ProductType }) => {
+   console.log(prodData);
+
    return (
       <section className='product-details'>
          <table>
             <tbody>
                <tr>
                   <td>Name</td>
-                  <td>3</td>
+                  <td>{ prodData.name }</td>
                </tr>
 
                <tr>
                   <td>Brand</td>
-                  <td>3</td>
+                  <td>{ prodData.brand }</td>
                </tr>
 
                <tr>
                   <td>Price</td>
-                  <td>3</td>
+                  <td>{ prodData.price }$</td>
                </tr>
 
                <tr>
                   <td>Size</td>
-                  <td>13</td>
+                  <td>{ prodData.size.map(x => <React.Fragment key={ x }>{ x } </React.Fragment>) }</td>
                </tr>
 
                <tr>
                   <td>Material</td>
-                  <td>mateial, colo, lorem , siypm, dolro</td>
+                  <td>{ prodData.material.map(x => <React.Fragment key={ x }>{ x } </React.Fragment>) }</td>
                </tr>
 
                <tr>
                   <td>Color</td>
-                  <td>3</td>
+                  <td>{ prodData.colors.map(x => <React.Fragment key={ x }>{ x } </React.Fragment>) }</td>
+               </tr>
+
+               <tr>
+                  <td>Category</td>
+                  <td>{ prodData.category }</td>
                </tr>
 
                <tr>
                   <td>In stock</td>
-                  <td>3</td>
+                  <td>{ prodData.inStock }</td>
                </tr>
             </tbody>
          </table>

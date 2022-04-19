@@ -1,0 +1,209 @@
+@import '../config';
+
+main.modify-stock {
+   h1 {
+      text-align: center;
+      color: $white-clr;
+      font-weight: 500;
+      margin-bottom: 1em;
+      font-size: clamp(1rem, 4vw, 1.2rem);
+   }
+
+   div.prod-text {
+      @include flex-sb-c;
+      margin-bottom: 2em;
+
+      h2 {
+         font-size: clamp(.9rem, 4vw, 1rem);
+         color: $grey-clr;
+         font-weight: 700;
+
+         span {
+            color: royalblue;
+            font-weight: 700;
+         }
+      }
+
+      input {
+         width: 250px;
+         max-width: 100%;
+         border: 1px solid royalblue;
+         border-radius: .2em;
+         padding: .5em 1em;
+         background: rgb(30, 30, 30);
+         outline: 0;
+         color: $grey-clr;
+         font-size: 1rem;
+         font-weight: 500;
+      }
+   }
+
+   section {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      article {
+         width: 350px;
+         height: 350px;
+         background: rgb(60, 60, 60);
+         margin: 0 .5em;
+         margin-bottom: 2em;
+         display: flex;
+         align-items: center;
+         flex-direction: column;
+         padding: .5em 0;
+         border-radius: .3em;
+         border: 1px solid grey;
+         position: relative;
+         overflow: hidden;
+
+         h1 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            background: rgb(0, 107, 0);
+            z-index: 99;
+            font-size: 1rem;
+            padding: .5em 0;
+            font-weight: 500;
+            animation: anim .5s;
+            animation-delay: 1s;
+
+            &.true { background: rgb(0, 107, 0); }
+            &.false { background: rgb(147, 6, 35); }
+
+            @keyframes anim {
+               100% { transform: translateY(-100%); }
+            }
+         }
+
+         button {
+            border-radius: .2em;
+            background: none;
+            outline: 0;
+            width: 40%;
+            min-width: 120px;
+            padding: .5em 0;
+            font-size: 1.1rem;
+            border: 2px solid royalblue;
+            cursor: pointer;
+            transition: .3s;
+            margin-top: .5em;
+
+            label { color: royalblue; font-weight: 700; transition: .3s; }
+
+            &:hover {
+               width: 80%;
+               border-color: orangered;
+               label { color: orangered; }
+            }
+         }
+
+         h6 {
+            color: $white-clr;
+            font-size: .8rem;
+            margin-top: .5em;
+            user-select: none;
+
+            span { font-weight: 500; }
+
+            span.num {
+               font-weight: 700;
+               color: rgb(255, 131, 86);
+            }
+         }
+
+         div.wrap {
+            display: flex;
+            width: 100%;
+            @include flex-c-c;
+            margin-top: 1em;
+
+            span {
+               @include flex-c-c;
+               background: rgba(172, 255, 47, 0.7);
+               cursor: pointer;
+
+               svg { pointer-events: none; }
+            }
+
+            input {
+               margin: 0 .5em;
+               border: 2px solid $grey-clr;
+               font-weight: 700;
+               aspect-ratio: 1;
+               font-size: .95rem;
+               width: 45px;
+               text-align: center;
+               color: $white-clr;
+               background: none;
+               outline: 0;
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+         }
+
+         h4 {
+            margin: .8em 0 .5em 0;
+            color: $white-clr;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: .8rem;
+         }
+
+         h3 {
+            font-weight: 400;
+            color: $grey-clr;
+            font-size: .95rem;
+         }
+
+         h5 {
+            margin-top: 1em;
+            font-weight: 700;
+            color: $white-clr;
+            font-size: .8rem;
+
+            span {
+               color: orangered;
+               font-weight: 700;
+            }
+         }
+
+         figure {
+            height: 33%;
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+            
+            img {
+               @include abs-50-50;
+               width: 100%;
+            }
+         }
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   main.modify-stock {
+      section {
+         article {
+            margin: .5em 0;
+         }
+      }
+
+      div.prod-text {
+         flex-direction: column;
+
+         input {
+            margin-top: 1em;
+         }
+      }   
+   }
+}
