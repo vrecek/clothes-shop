@@ -1,10 +1,12 @@
 import React from 'react'
 import { MdArrowDropDown } from 'react-icons/md'
 import { Navigation } from '../../../functions/UsefulClasses'
-import NavCategoryList from './NavCategoryList'
-import { NavigateCategory } from '../../../interfaces/navigate_interfaces'
+import { CategoryNameType, NavigateCategory } from '../../../interfaces/navigate_interfaces'
+import { GiArmoredPants, GiBilledCap, GiConverseShoe, GiTShirt, GiWatch } from 'react-icons/gi'
 
-const NavOneCategory = ({ text, manFirstList, manSecondList, womanFirstList, womanSecondList }: NavigateCategory) => {
+const NavOneCategory = ({ text, items, categoryName }: NavigateCategory) => {
+   const [lists, setLists] = React.useState<{ ol: HTMLOListElement[], li: HTMLLIElement[][] } | null>(null)
+   const articleRef = React.useRef<HTMLDivElement>(null)
    const n = new Navigation()
 
    const expandMenu = (e: React.MouseEvent) => {
@@ -49,35 +51,78 @@ const NavOneCategory = ({ text, manFirstList, manSecondList, womanFirstList, wom
       }
    }
 
+   const categoryIcons = {
+      shoes: <GiConverseShoe />,
+      pants: <GiArmoredPants />,
+      tops: <GiTShirt />,
+      hats: <GiBilledCap />,
+      accessories: <GiWatch />
+   }
+
+   React.useEffect(() => {
+      const eachNum: number = Math.floor(items.length / 3)
+      let rest: number = items.length % eachNum
+
+      const OL: HTMLOListElement[] = []
+      const LI: HTMLLIElement[][] = []
+
+      const initCategories = (): void => {
+         let i = 0
+         let actual = 0
+
+         while(i < 3) {
+            const ol = document.createElement('ol')
+            const liArray:any = []
+   
+            for(let j = 0; j < eachNum; j++) {
+               liArray.push(items[actual].nameText)
+               ++actual
+            }
+
+            if(--rest >= 0) {
+               liArray.push(items[actual].nameText)
+               ++actual
+            }
+   
+            OL.push(ol)
+            LI.push(liArray)
+   
+            ++i
+         }
+      }   
+      initCategories()
+
+      setLists({
+         ol: OL,
+         li: LI
+      })
+   }, [n])
+
    return (
       <li onClick={ expandMenu } className='outer-li'>
+
          <p>{ text } <MdArrowDropDown /> </p>
 
-         <article className='hidden-list'>
+         <article ref={ articleRef } className='hidden-list'>
 
-            <section>
-
-               <h3>For men</h3>
-
-               <NavCategoryList 
-                  firstList={ manFirstList } 
-                  secondList={ manSecondList } 
-               />
-
-            </section>
-
-            <section>
-
-               <h3>For women</h3>
-
-               <NavCategoryList 
-                  firstList={ womanFirstList } 
-                  secondList={ womanSecondList } 
-               />
-
-            </section>
+            {
+               lists && lists.ol.map((x, i) => (
+                  <ol key={ i }>
+                     {
+                        lists.li[i].map((y, j) => (
+                           <li 
+                              onClick={ () => window.location.pathname = `/search/category/${ y }`} 
+                              key={ j }> 
+                                 { categoryIcons[categoryName as CategoryNameType] } { y }
+                           </li>
+                        ))
+                     }
+                  </ol>
+               ))
+            }
 
          </article>
+
       </li>
    )
 }

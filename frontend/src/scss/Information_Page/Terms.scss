@@ -1,0 +1,42 @@
+@import '../config';
+
+main.terms-and-conditions {
+   background-color: #f8f9d2;
+   background-image: linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%);
+
+   article {
+      width: 80%;
+      margin: 0 auto;
+      padding: 2em;
+      background: #f1f1f1;
+
+      h1 {
+         border-bottom: 2px solid #303030;
+         color: #303030;
+         font-weight: 500;
+         text-transform: uppercase;
+         margin-bottom: 2em;
+         font-size: clamp(1.2rem, 4vw, 1.5rem);
+      }
+
+      p {
+         font-weight: 400;
+         line-height: 2em;
+         font-size: clamp(.8rem, 3vw, .9rem);
+
+         &.margin {
+            margin: 2em 0;
+            font-weight: 600;
+         }
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   main.terms-and-conditions {
+      article {
+         width: 100%;
+         padding: 2em 1em;
+      }
+   }
+}

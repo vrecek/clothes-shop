@@ -71,6 +71,16 @@ aside.nav-menu {
 
          &.li-logout {
             color: red;
+            position: relative;
+
+            img {
+               position: absolute;
+               right: 1em;
+               top: 50%;
+               transform: translateY(-50%);
+               width: 30px;
+               height: 30px;
+            }
          }
       }
 

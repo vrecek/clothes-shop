@@ -45,7 +45,7 @@ const REGISTER = () => {
 
    const elementsMap = (element: any): boolean | null => {
       switch(element.type) {
-         case "text": return element.value
+         case "text": case "password": return element.value
 
          case "radio": return element.checked ? element.value : false 
 

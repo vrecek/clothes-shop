@@ -1,9 +1,10 @@
 import React from 'react'
+import blank from '../../../images/blank.png'
 
-const CommentUserAvatar = () => {
+const CommentUserAvatar = ({ src }: { src: string }) => {
    return (
       <figure>
-         <img src='https://www.pixelstalk.net/wp-content/uploads/2016/07/1080p-Full-HD-Images.jpg' alt='avatar' />
+         <img src={ src || blank } alt='avatar' />
       </figure>
    )
 }

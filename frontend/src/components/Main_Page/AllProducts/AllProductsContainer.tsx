@@ -1,49 +1,32 @@
 import React from 'react'
 import '../../../css/AllProductsContainer.css'
-import SortProducts from './SortProducts'
+import { MainPageProductContext } from '../MAIN_PAGE'
 import OneProduct from './OneProduct'
-import ProductType from '../../../interfaces/product_interface'
-import Loading from '../../../functions/Loading'
-import gif from '../../../images/load.gif'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const AllProductsContainer = () => {
+   const ref = React.useRef<HTMLDivElement>(null)
+   const products = React.useContext(MainPageProductContext)
    const n = useNavigate()
-   const [prods, setProds] = React.useState<Array<ProductType> | null>(null)
 
-   React.useEffect(() => {
-      const init = (async () => {
-         const l = new Loading(gif,'loadingDivHeight loadingDivFixed')
-         l.appendImage(document.body)
+   const { pathname } = window.location
 
-         try {
-            const res = await fetch(process.env.REACT_APP_API_ALL_MAINPAGE_PRODUCTS!, {
-               method: "GET",
-               headers: {
-                  "Content-Type": "application/json"
-               }
-            })
+   const pages = [ ...Array(Math.ceil(products!.length / 8)).keys() ].map((x, i) => ++i)
+   const currentPageNumber = parseInt(pathname.slice(pathname.lastIndexOf('/') + 1)) || 1
 
-            if(!res.ok) throw res
-
-            const data = await res.json()
+   const pageProducts = products?.slice((currentPageNumber - 1) * 8, currentPageNumber * 8)
    
-            setProds(data)
-
-         }catch(err: any) {
-            n('/error', { state: { msg: err.statusText, code: err.status } })
-
-         }finally { l.removeImage() }
-      })()
+   React.useEffect(() => {
+      if(currentPageNumber > 1 && !pageProducts?.length) {
+         n('/error', { state: { msg: 'Page not found', code: 404 } })
+      }
    }, [])
 
    return (
-      <section className='main-products-container'>
-         <SortProducts />
-
-         <section className='all-prods-cont'>
+      <section id='all-products' className='main-products-container'>
+         <section ref={ ref } className='all-prods-cont'>
             {
-               prods && prods.map(x => (
+               pageProducts?.length ? pageProducts.map(x => (
                   <OneProduct 
                      key={ x._id } 
                      brand={ x.brand }
@@ -51,17 +34,26 @@ const AllProductsContainer = () => {
                      price={ x.price }
                      _id={ x._id } 
                      imageString={ x.imageString } 
+                     onSalePercent={ x.onSalePercent || 0}
                   />
                ))
+               :
+               <h1 style={{ margin: '2em 0', fontWeight: '500', color: '#303030' }}>No products to display</h1>
             }
          </section>
          
          <section className='pages'>
-            <div className='active'>1</div>
-            <div>2</div>
-            <div>...</div>
-            <div>99</div>
-            <div>99</div>
+            {
+               pages.map(x => (
+                  <Link 
+                     className={ x === currentPageNumber ? 'active' : '' } 
+                     key={ x } 
+                     to={`/${ x }`}
+                  >
+                     { x }
+                  </Link>
+               ))
+            }
          </section>
       </section>
    )

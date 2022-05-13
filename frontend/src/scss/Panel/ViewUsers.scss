@@ -1,0 +1,273 @@
+@import '../config';
+
+main.view-users {
+   h1.user-header {
+      text-align: center;
+      font-weight: 700;
+      font-size: .95rem;
+      color: $white-clr;
+   }
+
+   article {
+      height: 140px;
+      border: 2px solid $grey-clr;
+      border-radius: .2em;
+      padding: .5em;
+      display: flex;
+      background: rgb(30, 30, 30);
+      margin-top: .5em;
+      position: relative;
+
+      div.error-msg {
+         @include abs-50-50;
+         background: red;
+         border-radius: .2em;
+         padding: .5em;
+         color: $white-clr;
+         font-weight: 500;
+      }
+
+      div.wrap-flex {
+         width: 65%;
+         display: flex;
+      }
+      div.wrap-flex-info {
+         width: 45%;
+         display: flex;
+      }
+
+      h4 {
+         @include flex-c-c;
+         color: $white-clr;
+         font-size: clamp(.65rem, 3vw, .8rem);
+         font-weight: 500;
+
+         svg {
+            width: 20px;
+            height: 20px;
+         }
+
+         span {
+            font-weight: 500;
+         }
+      }
+
+      h3.empty-h3 {
+         font-size: clamp(.6rem, 3vw, .75rem);
+         color: $grey-clr;
+         font-weight: 500;
+         text-align: center;
+         margin-top: .5em;
+
+         span { color: $white-clr; font-weight: 500; }
+      }
+
+      section.history {
+         width: 40%;
+         min-width: 140px;
+         border-right: 1px solid $grey-clr;
+      }
+
+      section.icons {
+         margin: 0 0 0 auto;
+         @include flex-c-c;
+
+         span.one-icon {
+            position: relative;
+
+            span.icon-span {
+               width: clamp(20px, 5vw, 25px);
+               height: clamp(20px, 5vw, 25px);
+               display: block;
+               cursor: pointer;
+
+               svg {
+                  pointer-events: none;
+                  width: 100%;
+                  height: 100%;
+                  color: $grey-clr;
+                  transition: .3s;
+               }
+   
+               &:hover {
+                  svg { color: royalblue; } 
+               }
+            }
+
+            div {
+               position: absolute;
+               right: 0;
+               top: 100%;
+               border: 1px solid #505050;
+               background: #252525;
+               padding: 1em .5em;
+               width: 200px;
+
+               input {
+                  background: #303030;
+                  border: 1px solid #404040;
+                  outline: 0;
+                  font-size: .85rem;
+                  padding: .2em .5em;
+                  color: $white-clr;
+                  width: 100%;
+                  text-align: center;
+                  margin-top: .5em;
+               }
+
+               h6 {
+                  text-align: center;
+                  color: $white-clr;
+
+                  span {
+                     color: red;
+                  }
+               }
+            }
+         }
+      }
+
+      section.saved-locations {
+         border-right: 1px solid $grey-clr;
+         width: 40%;
+         min-width: 140px;
+         padding: 0 .5em;
+
+         button {
+            width: 100%;
+            border: 0;
+            background: #303030;
+            padding: .5em 0;
+            margin-top: .5em;
+            cursor: pointer;
+            transition: .3s;
+
+            label {
+               font-weight: 500;
+               border-radius: .2em;
+               font-size: .9rem;
+               color: $grey-clr;
+               text-transform: uppercase;
+            }
+
+            &:hover {
+               background: #383838;
+            }
+         }
+      }
+
+      section.basic-info {
+         height: 100%;
+         border-right: 1px solid $grey-clr;
+         width: 100%;
+
+         h3 {
+            color: $white-clr;
+            font-weight: 500;
+            font-size: clamp(.8rem, 1.5vw, .95rem);
+
+            span {
+               color: $grey-clr;
+               font-weight: 500;
+
+               &.role {
+                  color: orangered;
+               }
+            }
+         }
+      }
+
+      figure {
+         min-width: 70px;
+         aspect-ratio: 1;
+         position: relative;
+         overflow: hidden;
+         margin: auto 1em auto 0;
+
+         img {
+            height: 100%;
+            @include abs-50-50;
+         }
+      }
+   }
+
+   div.user-header {
+      @include flex-sb-c;
+      margin: 1em 0;
+
+      h2 {
+         font-size: clamp(.7rem, 3vw, .9rem);
+         color: $white-clr;
+         font-weight: 500;
+
+         span {
+            font-weight: 500;
+            color: royalblue;
+         }
+      }
+
+      input {
+         width: 25%;
+         min-width: 110px;
+         border: 1px solid royalblue;
+         outline: 0;
+         font-size: clamp(.75rem, 3vw, 1rem);
+         font-weight: 500;
+         border-radius: .2em;
+         background: #1d1d1d;
+         padding: .5em;
+         color: $white-clr;
+      }
+   }
+}
+
+@media (max-width: 768px) {
+   main.view-users {
+      article {
+         flex-direction: column;
+         height: auto;
+
+         section.basic-info {
+            border: 0;
+         }
+
+         section.saved-locations {
+            padding: 0;
+         }
+
+         figure {
+            width: 15%;
+            min-width: 50px;
+         }
+
+         div.wrap-flex {
+            width: 100%;
+         }
+         div.wrap-flex-info {
+            width: 100%;
+            margin-bottom: 2em;
+         }
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   main.view-users {
+      article {
+         padding: .25em;
+         section.icons {
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin: 0;
+         }
+
+         section.saved-locations { width: 50%; min-width: auto; }
+         section.history {
+            width: 50%;
+            border: 0;
+            min-width: auto;
+         }
+      }
+   }
+}

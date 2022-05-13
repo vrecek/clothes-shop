@@ -1,14 +1,15 @@
 import React from 'react'
 import { CgDollar } from 'react-icons/cg'
 import { MainMenuProduct } from '../../../interfaces/product_interface'
+import { roundToHalf, getDiscountPrice } from '../../../functions/CalculatePercent'
 
-const OneProduct = ({ imageString, name, brand, price, _id }: MainMenuProduct) => {
+const OneProduct = ({ imageString, name, brand, price, _id, onSalePercent }: MainMenuProduct) => {
    const redirectProd = () => window.location.href = `/product/${ _id }`
 
    return (
       <article onClick={ redirectProd } className='one-product'>
          <figure>
-            <img src={ imageString } alt='product' />
+            <img loading='lazy' src={ imageString } alt='product' />
          </figure>
 
          <section>
@@ -18,7 +19,17 @@ const OneProduct = ({ imageString, name, brand, price, _id }: MainMenuProduct) =
             </div>
 
             <div className='price'>
-               <h4>{ price } <CgDollar /> </h4>
+               {
+                  onSalePercent <= 0 
+                  ?
+                  <h4>{ price } <CgDollar /> </h4>
+                  :
+                  <>
+                     <h4>{ roundToHalf( getDiscountPrice(onSalePercent, price) ) } <CgDollar /> </h4>
+                     <h3>{ price } <CgDollar /> </h3>
+                     <h5>-${ onSalePercent }%</h5>
+                  </>
+               }
             </div>
          </section>
       </article>

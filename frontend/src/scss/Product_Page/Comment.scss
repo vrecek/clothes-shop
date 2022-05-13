@@ -14,7 +14,6 @@ article.comment {
       width: clamp(65px, 20vw, 100px);
       height: clamp(65px, 20vw, 100px);
       border-radius: 50%;
-      background: red;
       overflow: hidden;
       position: relative;
       margin-right: 1em;
@@ -34,7 +33,7 @@ article.comment {
 
          p {
             font-family: 'Padauk', sans-serif;
-            font-size: clamp(.85rem, 3vw, 1rem);
+            font-size: clamp(.9rem, 4vw, 1rem);
          }
       }
 
@@ -47,10 +46,12 @@ article.comment {
             margin-right: 1em;
             transition: .3s;
             cursor: pointer;
+            position: relative;
 
             h6 {
                font-size: clamp(1rem, 3vw, 1.1rem);
                font-weight: 500;
+               pointer-events: none;
             }
 
             svg {
@@ -67,6 +68,10 @@ article.comment {
 
             @each $i, $x in $clrs {
                &:nth-child(#{$i}) {
+                  &.active svg {
+                     color: #{$x};
+                  }
+
                   &:hover {
                      svg {
                         color: #{$x};

@@ -1,23 +1,36 @@
 import React from 'react'
 import '../../../css/Product.css'
-import img from '../../../images/prod2.png'
 import Button from '../../Reusable/Button'
 import { FiDollarSign } from 'react-icons/fi'
+import ProductType from '../../../interfaces/product_interface'
+import { roundToHalf, getDiscountPrice } from '../../../functions/CalculatePercent'
 
-const Product = () => {
+const Product = ({ details }: { details: ProductType }) => {
    return (
       <section className='product'>
          <figure>
-            <img src={ img } alt='prod' />
+            <img src={ details.imageString } alt='prod' />
          </figure>
 
-         <h2>Lorem ipsumdas dsad sad asd </h2>
+         <h6>{ details.brand }</h6>
+         <h2>{ details.name }</h2>
 
          <section>
-            <h3 className='price'> <FiDollarSign /> 1234</h3>
+            {
+               details.onSalePercent! <= 0
+               ?
+               <h3 className='price'> <FiDollarSign /> { details.price }</h3>
+               :
+               <>
+                  <h3 className='price'> <FiDollarSign /> 
+                     { roundToHalf( getDiscountPrice(details.onSalePercent ?? 0, details.price) ) }
+                  </h3>
+                  <h4 className='price'> <FiDollarSign /> { details.price }</h4>
+               </>
+            }
          </section>
 
-         <Button text='View' action={ () => {} } />
+         <Button text='View' action={ () => window.location.href = `/product/${ details._id }` } />
 
       </section>
    )

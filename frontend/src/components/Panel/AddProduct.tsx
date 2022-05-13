@@ -12,6 +12,8 @@ import Description from './AddInputs/Description'
 import DropDown from '../Main_Page/AllProducts/DropdownClass'
 import Loading from '../../functions/Loading'
 import gif from '../../images/load.gif'
+import categories from '../../json/Categories.json'
+import { CategoryNameType } from '../../interfaces/navigate_interfaces'
 
 const AddProduct = () => {
    const currentImageRef = React.useRef<HTMLDivElement>(null)
@@ -19,13 +21,26 @@ const AddProduct = () => {
    const listReference = React.useRef<HTMLUListElement>(null)
    const listReferenceSub = React.useRef<HTMLUListElement>(null)
 
-   const [currentCategory, setCategory] = React.useState<string>('')
-   const [currentSubCategory, setSubCategory] = React.useState<string>('')
-
    const d = new DropDown()
    const d1 = new DropDown()
 
    const [result, setResult] = React.useState<{ msg: string, success: boolean } | null>(null)
+
+   const displaySubCategories = (): string[] => {
+      const listElementArray: string[] = []
+
+      for(let x in categories) {
+         for(let y of categories[x as CategoryNameType]) {
+            listElementArray.push(y.nameText)
+         }
+      }
+
+      return listElementArray.sort((a: any, b: any) => {
+         if(a < b) { return -1; }
+         if(a > b) { return 1; }
+         return 0;
+      })
+   }
 
    const addOrDel = (e: React.MouseEvent, type: string, cname: string) => {
       const t = e.target as HTMLElement
@@ -66,7 +81,9 @@ const AddProduct = () => {
       l.appendImage(t.elements[t.elements.length - 1] as HTMLElement)
 
       const [brand, name, price, text] = [...t.elements as HTMLCollectionOf<HTMLInputElement>].map(x => x.value)
-      const sizes = [...t.elements as HTMLCollectionOf<HTMLInputElement>].filter(x => x.className === 'size').map(x => x.value)
+      const sizes = [...t.elements as HTMLCollectionOf<HTMLInputElement>]
+                    .filter(x => x.className === 'size' && x.value)
+                    .map(x => x.value)
       const colors = [...t.elements as HTMLCollectionOf<HTMLInputElement>].filter(x => x.className === 'color').map(x => x.value)
       const materials = [...t.elements as HTMLCollectionOf<HTMLInputElement>].filter(x => x.className === 'material').map(x => x.value)
       const image = [...t.elements as HTMLCollectionOf<HTMLInputElement>].filter(x => x.className === 'file').map(x => x.files![0])[0]
@@ -78,7 +95,8 @@ const AddProduct = () => {
       formData.append('name', name)
       formData.append('price', price)
       formData.append('text', text)
-      formData.append('category', currentCategory)
+      formData.append('category', listReference.current!.parentElement!.children[1].children[0].textContent || '')
+      formData.append('subCategory', listReferenceSub.current!.parentElement!.children[1].children[0].textContent || '')
       for(let x of sizes) formData.append('sizes[]', x)
       for(let x of colors) formData.append('colors[]', x)
       for(let x of materials) formData.append('materials[]', x)
@@ -97,16 +115,15 @@ const AddProduct = () => {
 
       }finally { l.removeImage(); setTimeout(() => setResult(null), 2000); }
    }
-
-   
-   const expandMenuFunc = (e: React.MouseEvent, dd: DropDown, listRef: React.RefObject<HTMLUListElement>) => {
+ 
+   const expandMenuFunc = (e: React.MouseEvent, dd: DropDown, listRef: React.RefObject<HTMLUListElement>, display: 'flex' | 'block') => {
       const t = e.target as HTMLElement
 
       dd.switchActive()
       dd.rotateArrow(t.children[1] as HTMLElement)
       
       if(dd.getActive) {
-         dd.expandMenu(t, listRef.current!)
+         dd.expandMenu(t, listRef.current!, display)
          return
       }
 
@@ -114,15 +131,14 @@ const AddProduct = () => {
    }
 
    React.useEffect(() => {
-      initLoop(listReference, d, setCategory)
-      initLoop(listReferenceSub, d1, setSubCategory)
+      initLoop(listReference, d)
+      initLoop(listReferenceSub, d1)
    }, [d, d1])
 
-   const initLoop = (
-      listRef: React.RefObject<HTMLUListElement>, 
-      ddClass: DropDown, 
-      stateHook: React.Dispatch<React.SetStateAction<string>>) => 
+   const initLoop = (listRef: React.RefObject<HTMLUListElement>, ddClass: DropDown) => 
       {
+         const currentHeader = listRef.current!.parentElement!.children[1].children[0]
+
          for(let x of [...listRef.current!.children]) {
             x.addEventListener('click', (e) => {
                const t = e.target as HTMLElement
@@ -132,7 +148,7 @@ const AddProduct = () => {
                ddClass.shrinkMenu(list, listRef.current!, .5)
                ddClass.switchActive()
 
-               stateHook(t.textContent!)
+               currentHeader.textContent = t.textContent!
             })
          }
    }
@@ -156,19 +172,16 @@ const AddProduct = () => {
                <section className='select'> 
                   <label>Category</label>
 
-                  <div className='select-div' onClick={ (e) => expandMenuFunc(e, d, listReference) }>
-                     <h5>{ currentCategory }</h5>
+                  <div className='select-div' onClick={ (e) => expandMenuFunc(e, d, listReference, 'block') }>
+                     <h5>{/* onclick text */}</h5>
                      <span className='arrow'> <IoMdArrowDropdown /> </span>
                   </div>
 
                   <ul ref={ listReference }>
                      <li>Hats</li>
-                     <li>Top</li>
-                     <li>Hoodie</li>
-                     <li>T-shirt</li>
+                     <li>Tops</li>
                      <li>Pants</li>
                      <li>Shoes</li>
-                     <li>Underwear</li>
                      <li>Accessories</li>
                   </ul>
                </section>
@@ -176,20 +189,17 @@ const AddProduct = () => {
                <section className='select sub'> 
                   <label>Subcategories</label>
 
-                  <div className='select-div' onClick={ (e) => expandMenuFunc(e, d1, listReferenceSub) }>
-                     <h5>{ currentSubCategory }</h5>
+                  <div className='select-div' onClick={ (e) => expandMenuFunc(e, d1, listReferenceSub, 'flex') }>
+                     <h5>{/* onclick text */}</h5>
                      <span className='arrow'> <IoMdArrowDropdown /> </span>
                   </div>
 
                   <ul ref={ listReferenceSub }>
-                     <li>Hats</li>
-                     <li>Top</li>
-                     <li>Hoodie</li>
-                     <li>T-shirt</li>
-                     <li>Pants</li>
-                     <li>Shoes</li>
-                     <li>Underwear</li>
-                     <li>Accessories</li>
+                     {
+                        displaySubCategories().map((x, i) => (
+                           <li key={ i }>{ x }</li>
+                        ))
+                     }
                   </ul>
                </section>
 
@@ -198,7 +208,7 @@ const AddProduct = () => {
                <Description />
 
                <div>
-                  <label>Sizes</label>
+                  <label>Sizes <span>(optional)</span></label>
 
                   <section className='icons'>
                      <span onClick={ (e) => addOrDel(e, 'del', 'size') }><AiOutlineMinus /></span>

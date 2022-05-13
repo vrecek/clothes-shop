@@ -46,13 +46,13 @@ export default class DropDown {
          -display: none
          -overflow: hidden
    */
-   public expandMenu(clickedList: HTMLElement, hiddenList: HTMLElement): void {
+   public expandMenu(clickedList: HTMLElement, hiddenList: HTMLElement, display?: 'block' | 'flex'): void {
       if(!this.active) return
 
       if(this.activeColors) this.changeColors(clickedList, true)
 
       hiddenList.style.height = 'auto'
-      hiddenList.style.display = 'block'
+      hiddenList.style.display = display || 'block'
       
       const height: number =  parseFloat(
                                  window.getComputedStyle(hiddenList, null).getPropertyValue('height')

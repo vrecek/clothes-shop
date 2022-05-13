@@ -42,3 +42,11 @@
       }
    }
 }
+
+@media (max-width: 480px) {
+   .product-details {
+      table { tr { td {
+         padding: 1em .5em;
+      } } }
+   }
+}

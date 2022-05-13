@@ -4,7 +4,7 @@ import TextSection from './TextSection'
 import ImageSection from './ImageSection'
 import { TextImageType } from '../../../interfaces/text_image_interface'
 
-const TextImage = ({ backColor, secColor, flexDirClass, title, text, buttonText, showIcons, imageSrc }: TextImageType) => {
+const TextImage = ({ buttonAction, backColor, secColor, flexDirClass, title, text, buttonText, showIcons, imageSrc }: TextImageType) => {
    return (
       <article style={{ backgroundColor: backColor }} className='text-image' id={ flexDirClass }>
 
@@ -13,6 +13,7 @@ const TextImage = ({ backColor, secColor, flexDirClass, title, text, buttonText,
             title={ title }
             text={ text }
             buttonText={ buttonText }
+            buttonAction={ buttonAction }
          />
 
          <ImageSection image={ imageSrc } showIcons={ showIcons } />

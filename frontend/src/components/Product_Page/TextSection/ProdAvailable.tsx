@@ -1,12 +1,33 @@
 import React from 'react'
-import { AiOutlineCheckCircle } from 'react-icons/ai'
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai'
 
-const ProdAvailable = () => {
+const ProdAvailable = ({ stock }: { stock: number }) => {
+   const available: boolean = stock > 0
+   
+   const display = (): JSX.Element => {
+      if(available) return (
+         <>
+            <section className='available true'>
+               <AiOutlineCheckCircle /> 
+               <h5>available</h5>
+            </section>
+         </>
+      )
+
+      return (
+         <>
+            <section className='available false'>
+               <AiOutlineCloseCircle />
+               <h5>not available</h5>
+            </section>
+         </>
+      )
+   }
+
    return (
-      <section className='available'>
-         <AiOutlineCheckCircle /> 
-         <h5> available </h5>
-      </section>
+      <>
+         { display() }
+      </>
    )
 }
 

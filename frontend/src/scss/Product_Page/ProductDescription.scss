@@ -9,9 +9,21 @@ section.product-description-section {
       border-left: 1px solid orange;
       border-right: 1px solid orange;
 
-      section.leave-comment {
+      form.leave-comment {
          width: 900px;
          max-width: 100%;
+         position: relative;
+
+         h4.finish-info {
+            position: absolute;
+            top: 100%;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: clamp(.8rem, 3vw, 1rem);
+            
+            &.false { color: red; }
+            &.true { color: rgb(0, 198, 0); }
+         }
 
          section.btn {
             @include flex-sb-c;
@@ -67,6 +79,7 @@ section.product-description-section {
                cursor: pointer;
                transition: .3s;
                font-size: clamp(.7rem, 4vw, .85rem);
+               position: relative;
 
                label { font-weight: 700; }
 
@@ -83,10 +96,11 @@ section.product-description-section {
             width: 100%;
 
             figure {
-               width: clamp(85px, 20vw, 130px);
-               height: clamp(85px, 20vw, 130px);
+               width: clamp(70px, 20vw, 130px);
+               height: clamp(70px, 20vw, 130px);
                border: 1px solid orangered;
-               border-right: 0;         
+               border-right: 0;     
+               aspect-ratio: 1;    
 
                div {
                   overflow: hidden;
@@ -134,6 +148,14 @@ section.product-description-section {
          section.comments-container {
             background: rgb(220, 218, 218);
             padding: 2em;
+
+            h2.no-comments {
+               font-weight: 500;
+               font-size: clamp(.9rem, 4vw, 1.1rem);
+               padding: 1em 0;
+               color: #303030;
+               margin-top: .5em;
+            }
          }
 
          div.comments-text {

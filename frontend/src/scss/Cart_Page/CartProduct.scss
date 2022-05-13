@@ -1,0 +1,231 @@
+@import '../config';
+
+article.cart-product {
+   border: 1px solid $grey-clr;
+   border-radius: .1em;
+   background: rgb(238, 238, 238);
+   display: flex;
+   padding: .5em;
+   margin-top: .1em;
+   width: 100%;
+   position: relative;
+
+   div.error {
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      transform: translateX(-50%) translateY(50%);
+      width: max-content;
+      padding: .5em 1em;
+      background: red;
+      z-index: 999;
+      color: rgb(232, 232, 232);
+      font-weight: 400;
+      font-size: .9rem;
+
+      &::before {
+         content: '';
+         position: absolute;
+         left: 50%;
+         bottom: 100%;
+         transform: translate(-50%, 50%) rotate(135deg);
+         width: 20px;
+         height: 20px;
+         background: red;
+      }
+   }
+
+   section.text {
+      display: flex;
+      justify-content: space-around;
+      width: 85%;
+
+      div {
+         width: 30%;
+      }
+
+      div.price {
+         @include flex-sb-c;
+         flex-direction: column;
+
+         div {
+            width: 100%;
+            @include flex-c-c;
+
+            h3, h4 {
+               font-weight: 500;
+               font-size: clamp(.9rem, 3vw, 1.2rem);
+            }
+
+            h3 { color: green; }
+            h4 {
+               color: orangered;
+               margin-left: .5em;
+               position: relative;
+
+               &::before {
+                  @include discountLine(100%);
+               }
+            }
+         }
+
+         section {
+            width: 100%;
+            @include flex-c-c;
+
+            span {
+               display: block;
+               width: 30px;
+               height: 30px;
+               cursor: pointer;
+               transition: .2s;
+
+               &:hover {
+                  transform: scale(.8);
+               }
+
+               svg {
+                  pointer-events: none;
+                  width: 100%;
+                  height: 100%;
+               }
+            }
+
+            div {
+               background: rgb(248, 248, 246);
+               height: clamp(35px, 8vw, 45px);
+               @include flex-c-c;
+               width: clamp(35px, 8vw, 45px);
+               font-weight: 700;
+               border-radius: .2em;
+               font-size: clamp(.85rem, 3vw, 1rem);
+            }
+         }
+
+         h2 {
+            font-size: clamp(.8rem, 2vw, .9rem);
+            font-weight: 500;
+            color:rgb(60, 60, 60);
+         }
+      }
+
+      div.icons {
+         @include flex-sa-c;
+         width: 20%;
+
+         span {
+            display: block;
+            width: clamp(17px, 5vw, 25px);
+            height: clamp(17px, 5vw, 25px);
+            cursor: pointer;
+            position: relative;
+
+            &:before {
+               content: attr(data-text);
+               position: absolute;
+               top: 100%;
+               left: 50%;
+               transform: translateX(-50%);
+               white-space: nowrap;
+               padding: .3em;
+               opacity: 0;
+               pointer-events: none;
+               transition: .4s;
+               background: whitesmoke;
+               border: 1px solid $grey-clr;
+               font-weight: 500;
+               font-size: .7em;
+               border-radius: .2em;
+            }
+
+            &:hover {
+               &:before {
+                  opacity: 1;
+               }
+               svg { color: royalblue; }
+            }
+
+            svg {
+               pointer-events: none;
+               width: 100%;
+               height: 100%;
+               transition: .4s;
+               color: #303030;
+            }
+         }
+      }
+
+      div.text {
+         display: flex;
+         justify-content: space-between;
+         flex-direction: column;
+         
+         h4 {
+           color: rgb(104, 104, 104);
+           text-transform: uppercase;
+           font-weight: 700;
+           margin-bottom: .5em;
+           font-size: clamp(.75rem, 3vw, 1rem);
+         }
+
+        h2 {
+            font-size: .9rem;
+            color:rgb(54, 54, 54);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            text-transform: lowercase;
+            font-family: 'Padauk', sans-serif;
+
+            svg { margin-right: .2em; }
+         }
+
+        h3 {
+           color:rgb(54, 54, 54);
+           font-weight: 500;
+           font-size: clamp(.7rem, 3vw, .9rem);
+         }
+      }
+   }
+
+   figure {
+      width: 15%;
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+
+      img {
+         @include abs-50-50;
+         width: 85%;
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   article.cart-product {
+      flex-direction: column;
+      padding: 0;
+
+      section.text {
+         width: 100%;
+         padding: 0 .2em;
+
+         div.price { justify-content: space-around; h2 { display: none; } section { div { font-weight: 500; } } }
+
+         div.icons {
+            position: absolute;
+            right: 0;
+            top: 0;
+         }
+
+         div {
+            width: 45%;
+         }
+      }
+
+      figure {
+         margin: 0 auto;
+         width: 25%;
+      }
+   }
+}

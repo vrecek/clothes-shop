@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../../Reusable/Button'
 import Fetches from '../../../functions/Fetches'
-import { DeleteInterface } from '../../../interfaces/product_interface'
+import ProductType, { DeleteInterface } from '../../../interfaces/product_interface'
 import Loading from '../../../functions/Loading'
 import gif from '../../../images/load.gif'
 
@@ -16,7 +16,15 @@ const PopupDelete = ({ stateHook, name, id, resultHook, productHook }: DeleteInt
       try {
          await Fetches.mix(`${ process.env.REACT_APP_API_DELETE_PRODUCT }/${ id }`, 'DELETE')
          resultHook('Deleted')
-         productHook(prods => prods!.filter(x => x._id !== id))
+         productHook((prods: any) => {
+            const deleted = prods.original.filter((x: any) => x._id !== id)
+            prods.original = deleted
+            prods.copy = deleted
+
+            return ({
+               ...prods
+            })
+         })
 
       }catch(err: any) {
          resultHook(err.message)

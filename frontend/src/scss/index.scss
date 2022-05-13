@@ -50,6 +50,22 @@ body {
    }
 }
 
+main.blank-page {
+   width: 100vw;
+   height: 100vh;
+   @include flex-sa-c;
+   flex-direction: column;
+
+   section {
+      width: 80%;
+      margin: 0 auto;
+      background: rgba(90, 90, 90, .1);
+   }
+
+   section.blank-nav { height: 10vh; }
+   section.blank-header { height: 60vh; }
+}
+
 div.loadingDivHeight,
 div.loadingDiv,
 div.loadingDivFixed {
@@ -67,6 +83,7 @@ div.loadingDivFixed {
 
    img {
       width: 50%;
+      pointer-events: none;
    }
 }
 

@@ -7,12 +7,10 @@ nav.layout-nav-categories {
    ul {
       list-style: none;
       display: flex;
-
+      background: rgb(248, 248, 248);
 
       li.outer-li {
-         // width: 14.35%;
          width: 12.5%;
-         //min-width: 110px;
          padding: clamp(.8rem, 4vw, 1rem) 0;
          background: rgb(248, 248, 248);
          @include flex-c-c;
@@ -40,6 +38,7 @@ nav.layout-nav-categories {
             top: 100%;
             left: 0;
             width: clamp(600px, 70vw, 800px);
+            width: 800px;
             max-width: 100vw;
             border: 2px solid orange;
             border-radius: 0 0 .2em .2em; 
@@ -48,42 +47,40 @@ nav.layout-nav-categories {
             overflow: hidden;
             transition: .2s;
             display: flex;
-            background: rgb(248, 248, 248);
+            background-color: #ffffff;
+            background-image: linear-gradient(315deg, #ffffff 0%, #e8ecf0 74%);
             z-index: 999;
+            justify-content: space-around;
 
-            section {
-               width: 50%;
-               padding: 1em 2em;
+            ol {
+               padding: 2em 0;
+               list-style: none;
+               width: 33%;
+               padding: 2em 1em;
 
-               ol {
-                  list-style: none;
+               &:not(:last-child) { border-right: 1px solid #30303019; }
 
-                  a {
-                     font-size: .85rem; 
-                     font-family: 'Padauk', sans-serif;
-                     transition: .2s;
-                     text-decoration: none;
-                     margin-bottom: .25em;
-                     color: black;
-                     display: block;
+               li {
+                  font-weight: 600;
+                  color: #303030;
+                  margin-bottom: 3em;
+                  display: flex;
+                  font-size: clamp(.9rem, 3vw, 1.1rem);
+                  align-items: center;
+                  justify-content: space-between;
+                  transition: .3s;
+                  width: max-content;
+                  font-family: 'Padauk', sans-serif;
+                  width: 100%;
 
-                     &:hover {
-                        color: royalblue;
-                        transform: scale(1.2);
-                     }
+                  svg { margin-right: .5em; width: 20px; height: 20px; }
+
+                  &:last-child { margin: 0; }
+
+                  &:hover {
+                     color: royalblue;
+                     transform: scale(.9);
                   }
-               }
-
-               div {
-                  @include flex-sb-c;
-               }
-
-               h3 {
-                  font-weight: 700;
-                  margin-bottom: 1em;
-                  border-bottom: 1px solid black;
-                  font-size: clamp(.95rem, 4vw, 1.1rem);
-                  white-space: nowrap;
                }
             }
          }
@@ -108,12 +105,15 @@ nav.layout-nav-categories {
       ul {
          li.outer-li {
             article.hidden-list {
-               section {
-                  padding: 1em;
+               flex-direction: column;
 
-                  div {
-                     flex-direction: column;
-                     align-items: flex-start;
+               ol {
+                  width: 100%;
+
+                  li {
+                     justify-content: flex-start;
+                     width: 100%;
+                     font-size: .95rem;
                   }
                }
             }

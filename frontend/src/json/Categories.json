@@ -1,0 +1,226 @@
+{
+   "pants": [
+      {
+         "url": "uel",
+         "nameText": "Sweat"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Jeans"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Bermuda"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Punk"
+      },
+      
+      {
+         "url": "uel",
+         "nameText": "Shorts"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Joggers"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Cargo"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Slim"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Skinny"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Straight"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Joggers"
+      }
+   ],
+
+   "shoes": [
+      {
+         "url": "uel",
+         "nameText": "Boots"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Sneakers"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Hiking boots"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Sandals"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Slippers"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "High tops"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "High boots"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Heels"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Ballerina"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Dress shoes"
+      }
+   ],
+
+   "tops": [
+      {
+         "url": "uel",
+         "nameText": "T-shirt"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Blouse"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Hoodie"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Polo"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Shirt"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Sweater"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Sleeveless"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Tunic"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Poncho"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Vest"
+      }
+   ],
+
+   "hats": [
+      {
+         "url": "uel",
+         "nameText": "Beanie"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Beret"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Baseball cap"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Panama"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Cowboy"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Flat cap"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Sun hat"
+      }
+   ],
+
+   "accessories": [
+      {
+         "url": "uel",
+         "nameText": "Watches"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Rings"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Rings"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Rings"
+      },
+
+      {
+         "url": "uel",
+         "nameText": "Rings"
+      }
+   ]
+}

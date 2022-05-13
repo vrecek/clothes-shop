@@ -1,0 +1,102 @@
+@import '../config';
+
+main.user-cart {
+   padding: 3em 0;
+   display: flex;
+   justify-content: space-around;
+
+   a {
+      text-decoration: none;
+      margin-top: 1.5em;
+      width: 100%;
+      border: 2px solid royalblue;
+      border-radius: .2em;
+      padding: 1em 0;
+      transition: .3s;
+      cursor: pointer;
+      display: block;
+      color: royalblue;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: -1px;
+      background: none;
+      transition: .3s;
+      text-align: center;
+
+      &:hover {
+         background: royalblue;
+         color: white;
+      }
+   }
+
+   section.items {
+      width: clamp(520px, 50%, 100%);
+
+      height: max-content;
+      border-radius: .1em;
+
+      h1.empty-cart {
+         font-size: clamp(1.5rem, 4vw, 2rem);
+         font-weight: 500;
+         color: #303030;
+         text-align: center;
+      }
+   }
+
+   aside {
+      width: 20%;
+      min-width: 220px;
+      border: 2px solid orangered;
+      border-radius: .2em;
+      padding: 1em;
+      background: rgb(241, 238, 238);
+
+      h1 {
+         text-align: center;
+         text-transform: uppercase;
+         font-weight: 500;
+         color: #202020;
+         letter-spacing: -1px;
+         border-bottom: 2px solid orangered;
+         padding-bottom: .5em;
+         font-size: clamp(1rem, 4vw, 1.5rem);
+      }
+
+      h4 {
+         &:first-of-type { margin: 1.5em 0; }
+         &:last-of-type {
+            border-bottom: 2px solid orangered;
+            padding-bottom: 1.3em;
+         }
+
+         font-family: 'Padauk', sans-serif;
+         font-weight: 400;
+         color: #101010;
+         @include flex-sb-c;
+         width: 100%;
+
+         span {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1.2rem;
+         }
+      }
+   }
+}
+
+@media (max-width: 768px) {
+   main.user-cart {
+      flex-direction: column;
+      align-items: center;
+
+      section.items {
+         width: 95%;
+      }
+
+      aside {
+         width: 95%;
+         margin-top: 2em;
+      }
+   }
+}

@@ -39,7 +39,7 @@ const ModifyStock = () => {
 
          <section>
             {
-               prods && prods.map(x => (
+               prods?.length ? prods.map(x => (
                   <StockProduct
                      key={ x._id }
                      brand={ x.brand }
@@ -49,6 +49,8 @@ const ModifyStock = () => {
                      _id={ x._id }
                   />
                ))
+               :
+               <h1 style={{ color: 'whitesmoke', fontWeight: '500' }}>No products</h1>
             }
          </section>
       </main>

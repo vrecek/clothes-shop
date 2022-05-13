@@ -4,7 +4,10 @@ import ProductType from '../../../interfaces/product_interface'
 import PopupDelete from './PopupDelete'
 
 const Product = (
-   { productData, allItemsHook }: { productData: ProductType, allItemsHook: React.Dispatch<React.SetStateAction<ProductType[] | null>> }) => {
+   { productData, allItemsHook }: { productData: ProductType, allItemsHook: React.Dispatch<React.SetStateAction<{
+      original: ProductType[];
+      copy: ProductType[];
+   } | null>> }) => {
 
    const [popup, setPopup] = React.useState<boolean>(false)
    const [delResult, setDelResult] = React.useState<string>('')
@@ -39,8 +42,10 @@ const Product = (
 
             <div className='infos'>
                <h5>In stock: <span>{ productData.inStock }</span></h5>
-               <h6><span>Catgory:</span> Accessories</h6>
-               <h6><span> Subcategories:</span> Accessories, lolek, loemr, test, conqestaur</h6>
+               <h6><span>Category:</span> { productData.category }</h6>
+               <h6><span>Views:</span> { productData.views }</h6>
+               <h6 className={ productData.onSalePercent! > 0 ? 'sale' : '' }><span>SALE:</span> { productData.onSalePercent }%</h6>
+               <h6><span> Subcategory:</span> { productData.subCategory }</h6>
             </div>
          </section>
 

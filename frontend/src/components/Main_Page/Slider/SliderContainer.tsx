@@ -91,7 +91,7 @@ const SliderContainer = () => {
    }
 
    const fillIntervalFunction = (): void => {
-      if(!document.hasFocus()) return
+      if(!document.hasFocus() || !sliderRef?.current?.parentElement) return
 
       const bar = sliderRef.current!.parentElement!.children[2].children[0] as HTMLElement
       fillNumber += 1.162
@@ -101,7 +101,7 @@ const SliderContainer = () => {
    }
 
    const intervalFunction = (): void => {
-      if(!document.hasFocus()) return
+      if(!document.hasFocus() || !sliderRef?.current?.parentElement) return
 
       const btnCont = [...sliderRef.current!.parentElement!.children[0].children] as Array<HTMLElement>
 
@@ -126,7 +126,7 @@ const SliderContainer = () => {
          <h1>Lorem ipsum dolor 20% off</h1>
 
          <section className='image-wrap'>
-            <span className='arrow' onClick={ (e) => moveSlider(e, 'left') }> <AiOutlineLeft /> </span>
+            <span className='arrow left' onClick={ (e) => moveSlider(e, 'left') }> <AiOutlineLeft /> </span>
 
             <figure>
                
@@ -148,7 +148,7 @@ const SliderContainer = () => {
 
             </figure>
 
-            <span className='arrow' onClick={ (e) => moveSlider(e, 'right') }> <AiOutlineRight /> </span>
+            <span className='arrow right' onClick={ (e) => moveSlider(e, 'right') }> <AiOutlineRight /> </span>
          </section>
 
       </section>

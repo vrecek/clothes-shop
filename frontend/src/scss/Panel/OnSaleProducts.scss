@@ -1,0 +1,155 @@
+@import '../config';
+
+main.discount-products {
+   h1 {
+      text-align: center;
+      font-weight: 500;
+      color: $white-clr;
+      margin-bottom: 1em;
+   }
+
+   section {
+      @include flex-c-c;
+      flex-wrap: wrap;
+
+      article {
+         width: 205px;
+         height: 300px;
+         border: 1px solid $grey-clr;
+         background: rgb(49, 49, 49);
+         border-radius: .2em;
+         @include flex-sb-c;
+         flex-direction: column;
+         padding: .5em .5em 1em .5em;
+         margin: 1em;
+         position: relative;
+
+         h6 {
+            font-size: .8rem;
+            font-weight: 500;
+            color: royalblue;
+
+            span { font-weight: 500; }
+         }
+
+         h4 {
+            font-size: .8rem;
+            color: $white-clr;
+            margin: 1em 0;
+            font-weight: 500;
+            text-align: center;
+
+            span { font-weight: 500; }
+         }
+
+         div.prices {
+            @include flex-sa-c;
+            width: 100%;
+
+            h3.discounted {
+               color: orangered;
+               font-style: italic;
+               position: relative;
+               display: none;
+ 
+               &::before {
+                  content: '';
+                  @include abs-50-50;
+                  transform: translate(-50%, -50%);
+                  width: 150%;
+                  height: 2px;
+                  background: rgba(170, 51, 0, 0.3);
+               }
+            }
+
+            h3 {
+               color: $white-clr;
+            }
+         }
+
+         form {
+            div {
+               position: relative;
+   
+               input::-webkit-outer-spin-button,
+               input::-webkit-inner-spin-button {
+                 -webkit-appearance: none;
+                 margin: 0;
+               }
+   
+               input {
+                  border: 1px solid $grey-clr;
+                  background: rgb(50, 50, 50);
+                  outline: 0;
+                  color: $white-clr;
+                  text-align: center;
+                  border-radius: .2em;
+                  font-weight: 400;
+                  padding: .25em 0;
+               }
+   
+               svg {
+                  color: $white-clr;
+                  position: absolute;
+                  right: 0;
+                  top: 50%;
+                  transform: translateY(-50%);
+               }
+            }
+         }
+
+         h5 {
+            @include abs-50-50;
+            background: #252525;
+            padding: .5em 1em;
+            color: $white-clr;
+            font-weight: 500;
+            z-index: 99;
+            width: max-content;
+            max-width: 100%;
+            text-align: center;
+         }
+
+         button {
+            padding: .25em 0;
+            border-radius: .2em;
+            background: none;
+            border: 1px solid orangered;
+            color: orangered;
+            cursor: pointer;
+            transition: .3s;
+            width: 100%;
+
+            &:hover {
+               border-color: orange;
+               label { color: orange; }
+            }
+
+            label {
+               font-weight: 700;
+               text-transform: uppercase;
+               transition: .3s;
+            }
+         }
+
+         h2, h3 {
+            font-size: .9rem;
+            color: $grey-clr;
+            font-weight: 500;
+            text-align: center;
+         }
+
+         figure {
+            width: 50%;
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+
+            img {
+               width: 100%;
+               @include abs-50-50;
+            }
+         }
+      }
+   }
+}

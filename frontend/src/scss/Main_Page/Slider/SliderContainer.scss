@@ -1,8 +1,6 @@
 @import '../../config';
 
 section.image-slider-container {
-   margin-top: .7em;
-
    h1 {
       font-size: clamp(1.2rem, 4vw, 2.5rem);
       font-weight: 700;
@@ -31,8 +29,8 @@ section.image-slider-container {
          }
 
          svg {
-            width: clamp(15px, 3vw, 35px);
-            height: clamp(15px, 3vw, 35px);
+            width: clamp(15px, 5vw, 35px);
+            height: clamp(15px, 5vw, 35px);
             pointer-events: none;
             transition: .3s;
          }
@@ -98,6 +96,30 @@ section.image-slider-container {
                width: 100%;
                transform: translateY(-20%);
             }
+         }
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   section.image-slider-container {
+      .image-wrap {
+         position: relative;
+
+
+         figure {
+            width: 100%;
+         }
+
+         span.arrow {
+            position: absolute;
+            z-index: 99;
+            top: 0;
+            color: white;
+            width: 10%;
+
+            &.left { left: 0; }
+            &.right { right: 0; }
          }
       }
    }

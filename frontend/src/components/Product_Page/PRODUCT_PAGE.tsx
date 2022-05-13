@@ -8,10 +8,15 @@ import ProductDetails from './MainDescriptions/ProductDetails'
 import ProductType from '../../interfaces/product_interface'
 import { useNavigate } from 'react-router-dom'
 import Fetches from '../../functions/Fetches'
+import Loading from '../../functions/Loading'
+import gif from '../../images/load.gif'
+import { LoggedUserContext } from '../../App'
 
 const PRODUCT_PAGE = () => {
-   const [visibleSection, setVisibleSection] = React.useState<JSX.Element>(<ProductOpinions />)
+   const user = React.useContext(LoggedUserContext)
    const [product, setProduct] = React.useState<ProductType | null>(null)
+   const [visibleSection, setVisibleSection] = React.useState<JSX.Element>()
+
    const n = useNavigate()
 
    const changeInfo = (e: React.MouseEvent, what: string): void => {
@@ -22,7 +27,7 @@ const PRODUCT_PAGE = () => {
       t.className = 'active'
 
       switch(what) {
-         case 'opinions': setVisibleSection(<ProductOpinions />)
+         case 'opinions': setVisibleSection(<ProductOpinions product={ product! } user={ user } />)
          break;
 
          case 'details': setVisibleSection(<ProductDetails prodData={ product! } />)
@@ -34,16 +39,22 @@ const PRODUCT_PAGE = () => {
       const location = window.location.href
       const id = location.substring(location.lastIndexOf('/') + 1)
 
-      const init = (async () => {
+      const init = async () => {
+         const l = new Loading(gif, 'loadingDivHeight loadingDivFixed')
+         l.appendImage(document.body)
+
          try{
             const data = await Fetches.mix(`${ process.env.REACT_APP_API_PRODUCT_PAGE! }/${ id }`, 'GET')
-   
+  
+            setVisibleSection(<ProductOpinions product={ data } user={ user } />)
             setProduct(data)
 
          }catch(err: any) {
             n('/error', { state: { code: err.status, msg: err.statusText } })
-         }  
-      })()
+
+         }finally { l.removeImage() }
+      }
+      init()
    }, [])
 
    if(product)
@@ -56,15 +67,16 @@ const PRODUCT_PAGE = () => {
 
             <ProductText 
                _id={ product._id }
+               user={ user }
                brand={ product.brand }
                inStock={ product.inStock }
                name={ product.name }
                price={ product.price }
                description={ product?.description }
-               category={ product.category }
                size={ product.size }
                colors={ product.colors }
-               material={ product.material }
+               onSalePercent={ product.onSalePercent || 0 }
+               rate={ product.rate }
             />
 
          </section>

@@ -1,0 +1,130 @@
+@import '../config';
+
+main.about-page {
+   background-color: #f8f9d2;
+   background-image: linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%);
+
+   article {
+      width: 85%;
+      margin: 0 auto 0 auto;
+      padding-bottom: 2em;
+
+      h2 {
+         font-weight: 700;
+         color: #252525;
+         margin-bottom: .5em;
+         display: flex;
+         align-items: center;
+         font-size: clamp(1.2rem, 4vw, 1.5rem);
+
+         svg { margin-right: .5em; }
+      }
+
+      ol {
+         list-style: none;
+         display: flex;
+         flex-wrap: wrap;
+
+         li {
+            width: 130px;
+            margin-bottom: .5em;
+            font-size: clamp(.85rem, 4vw, 1rem);
+            font-weight: 400;
+            color: #353535;
+         }
+      }
+
+      ul {
+         li {
+            width: max-content;
+            margin-bottom: 2em;
+
+            h6 {
+               font-size: clamp(.9rem, 2vw, 1rem);
+               font-family: 'Padauk', sans-serif;
+               color: #202020;
+            }
+
+            h5 {
+               font-weight: 500;
+               color: orangered;
+               font-size: clamp(.9rem, 2vw, 1rem);
+               margin-bottom: .5em;
+            }
+         }
+      }
+   }
+   
+   section {
+      display: flex;
+      justify-content: space-around;
+      padding: 3em 0;
+      margin-bottom: 2em;
+
+      figure {
+         width: 35%;
+         aspect-ratio: 1;
+         background: red;
+         overflow: hidden;
+         position: relative;
+
+         img {
+            height: 100%;
+            @include abs-50-50;
+         }
+      }
+
+      div {
+         width: 35%;
+         @include flex-sb-c;
+         flex-direction: column;
+
+         h1 {
+            text-align: center;
+            color: #303030;
+            font-size: clamp(1.6rem, 5vw, 3rem);
+            font-weight: 200;
+            text-transform: uppercase;
+            border-bottom: 1px solid #303030;
+         }
+
+         p {
+            margin-top: 1em;
+            font-family: 'Padauk', sans-serif;
+            text-align: center;
+            font-size: clamp(.85rem, 2vw, 1.25rem);
+         }
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   main.about-page {
+      section {
+         flex-direction: column;
+         align-items: center;
+         margin: 0;
+         padding: 1em 0;
+
+         div {
+            width: 90%;
+         }
+
+         figure {
+            display: none;
+         }
+      }
+
+      article {
+         width: 95%;
+
+         ul {
+            list-style: none;
+
+            li {
+               width: 100%;
+            }
+         }
+      }
+   }
+}

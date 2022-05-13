@@ -6,7 +6,8 @@ export interface TextImageType {
    text: string,
    buttonText: string,
    showIcons: boolean,
-   imageSrc: string | string[]
+   imageSrc: string | string[],
+   buttonAction: any
 }
 
 export interface TextSectionType {
@@ -14,4 +15,5 @@ export interface TextSectionType {
    text: string,
    backColor: string,
    buttonText: string,
+   buttonAction: React.MouseEventHandler
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CommentText = () => {
+const CommentText = ({ commentsNumber }: { commentsNumber: number }) => {
    return (
       <div className='comments-text'>
-         <p>Comments (21)</p>
+         <p>Comments ({ commentsNumber })</p>
          <span></span>
       </div>
    )

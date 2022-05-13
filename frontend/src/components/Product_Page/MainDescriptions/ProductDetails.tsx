@@ -3,8 +3,6 @@ import '../../../css/ProductDetails.css'
 import ProductType from '../../../interfaces/product_interface'
 
 const ProductDetails = ({ prodData }: { prodData: ProductType }) => {
-   console.log(prodData);
-
    return (
       <section className='product-details'>
          <table>
@@ -20,14 +18,19 @@ const ProductDetails = ({ prodData }: { prodData: ProductType }) => {
                </tr>
 
                <tr>
-                  <td>Price</td>
+                  <td>Original price</td>
                   <td>{ prodData.price }$</td>
                </tr>
 
-               <tr>
-                  <td>Size</td>
-                  <td>{ prodData.size.map(x => <React.Fragment key={ x }>{ x } </React.Fragment>) }</td>
-               </tr>
+               {
+                  prodData?.size?.length ?
+                  <tr>
+                     <td>Size</td>
+                     <td>{ prodData.size.map(x => <React.Fragment key={ x }>{ x } </React.Fragment>) }</td>
+                  </tr>
+                  :
+                  null
+               }
 
                <tr>
                   <td>Material</td>
@@ -42,6 +45,11 @@ const ProductDetails = ({ prodData }: { prodData: ProductType }) => {
                <tr>
                   <td>Category</td>
                   <td>{ prodData.category }</td>
+               </tr>
+
+               <tr>
+                  <td>Subcategory</td>
+                  <td>{ prodData.subCategory }</td>
                </tr>
 
                <tr>

@@ -272,6 +272,10 @@ main.view-products {
                span {
                   color: $white-clr;
                }
+
+               &.sale, &.sale span {
+                  color: orange;
+               }
             }
 
             h5 {

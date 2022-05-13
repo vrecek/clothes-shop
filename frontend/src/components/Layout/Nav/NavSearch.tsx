@@ -30,12 +30,17 @@ const NavSearch = () => {
       setColor(t, searchIcon, 'blue')
    }
 
-   const showDelete = (e: React.KeyboardEvent): void => {
+   const showDeleteAndRedirect = (e: React.KeyboardEvent): void => {
       const t = e.target as HTMLInputElement
       const icon = t.parentElement?.children[2] as HTMLElement
 
       if(t.value) {
          icon.style.right = '100%'
+
+         if(e.key === 'Enter') {
+            window.location.pathname = `/search/bar/${ t.value }`
+         }
+
          return
       }
 
@@ -52,18 +57,27 @@ const NavSearch = () => {
       setColor(input, searchIcon, 'orange')
    }
 
+   const clickRedirect = (e: React.MouseEvent) => {
+      const t = e.target as HTMLElement
+      const inputField = t.parentElement!.children[0] as HTMLInputElement
+
+      if(inputField.value) {
+         window.location.pathname = `/search/bar/${ inputField.value }`
+      }
+   }
+
    return (
       <section className='nav-search'>
 
          <input 
-            onKeyUp={ showDelete }
+            onKeyUp={ showDeleteAndRedirect }
             onFocus={ (e) => highlight(e, 'focus') } 
             onBlur={ (e) => highlight(e, 'blur') } 
             type='text' 
             spellCheck='false' 
          />
 
-         <span className='search-icon'>
+         <span onClick={ clickRedirect } className='search-icon'>
             <BiSearch />
          </span>
 

@@ -1,8 +1,9 @@
 import React from 'react'
 import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io'
+import ProductType from '../../../interfaces/product_interface'
 import Product from './Product'
 
-const CardContainer = () => {
+const CardContainer = ({ categoryProducts }: { categoryProducts: ProductType[] }) => {
    let counter:number = 0
 
    const moveProds = (e: React.MouseEvent, dir: string) => {
@@ -41,12 +42,11 @@ const CardContainer = () => {
 
          <section className='cards'>
             <div>
-               <Product />
-               <Product />
-               <Product />
-               <Product />
-               <Product />
-               <Product />
+               {
+                  categoryProducts.map((x, i) => (
+                     <Product key={ i } details={ x } />
+                  ))
+               }
             </div>
          </section>
 

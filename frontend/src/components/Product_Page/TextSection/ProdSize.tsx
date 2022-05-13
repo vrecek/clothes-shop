@@ -5,7 +5,7 @@ import { SizeType } from '../../../interfaces/product_interface'
 const ProdSize = ({ expandMenuFunc, sizeActual, listReference, sizes }: SizeType) => {
    return (
       <section className='size'>
-         <h4>Select size: </h4>
+         <h4>Size: </h4>
 
          <section className='select'> 
             <div onClick={ expandMenuFunc }>
@@ -15,8 +15,8 @@ const ProdSize = ({ expandMenuFunc, sizeActual, listReference, sizes }: SizeType
 
             <ul ref={ listReference }>
                {
-                  sizes.map(x => (
-                     <li key={ x }>{ x }</li>
+                  sizes.map((x, i) => (
+                     <li key={ i }>{ x }</li>
                   ))
                }
             </ul>

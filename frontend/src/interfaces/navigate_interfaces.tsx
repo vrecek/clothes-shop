@@ -1,35 +1,12 @@
 export interface NavigateCategory {
    text: string,
 
-   manFirstList: Array<{
+   items: Array<{
       url: string,
       nameText: string
    }>,
 
-   manSecondList: Array<{
-      url: string,
-      nameText: string
-   }>,
-
-   womanFirstList: Array<{
-      url: string,
-      nameText: string
-   }>,
-
-   womanSecondList: Array<{
-      url: string,
-      nameText: string
-   }>,
+   categoryName: string
 }
 
-export interface TwoLists {
-   firstList: Array<{
-      url: string,
-      nameText: string
-   }>,
-
-   secondList: Array<{
-      url: string,
-      nameText: string
-   }>,
-}
+export type CategoryNameType = 'shoes' | 'pants' | 'accessories' | 'hats' | 'tops'

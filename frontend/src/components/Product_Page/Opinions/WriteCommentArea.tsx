@@ -1,14 +1,15 @@
 import React from 'react'
+import blank from '../../../images/blank.png'
 
-const WriteCommentArea = () => {
+const WriteCommentArea = ({ username, imageString }: { username: string, imageString: string | null }) => {
    return (
       <section className='area'>
          <figure>
             <div>
-               <img src='https://www.pixelstalk.net/wp-content/uploads/2016/07/1080p-Full-HD-Images.jpg' alt='user-avatar' />
+               <img src={ imageString ?? blank } alt='user-avatar' />
             </div>
             
-            <figcaption>Not logged</figcaption>
+            <figcaption>{ username }</figcaption>
          </figure>
 
          <textarea spellCheck='false'>

@@ -80,6 +80,7 @@ nav.layout-nav {
             color: white;
             width: 25px;
             height: 25px;
+            pointer-events: none;
          }
       }
    }
@@ -93,6 +94,21 @@ nav.layout-nav {
          color: black;
          margin: 0 .5em;
          position: relative;
+
+         span {
+            pointer-events: none;
+            position: absolute;
+            right: -15px;
+            top: -15px;
+            border: 1px solid red;
+            border-radius: 50%;
+            @include flex-c-c;
+            width: 20px;
+            color: #303030;
+            font-weight: 500;
+            height: 20px;
+            font-size: .8rem;
+         }
 
          &::before {
             position: absolute;
