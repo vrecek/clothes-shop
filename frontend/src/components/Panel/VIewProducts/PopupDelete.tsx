@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../../Reusable/Button'
 import Fetches from '../../../functions/Fetches'
-import ProductType, { DeleteInterface } from '../../../interfaces/product_interface'
+import { DeleteInterface } from '../../../interfaces/product_interface'
 import Loading from '../../../functions/Loading'
 import gif from '../../../images/load.gif'
 

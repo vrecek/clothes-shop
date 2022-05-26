@@ -154,3 +154,29 @@ export interface CommentRateType {
    whoLiked: string[],
    whoDisliked: string[]
 }
+
+export interface HistoryProductFetchData {
+   _id: string,
+   name: string,
+   price: number,
+   onSalePercent: number,
+   imageString: string,
+   brand: string
+}
+
+export interface HistoryProductType {
+   prods: {
+      updatedPrice: number,
+      name: string,
+      price: number,
+      imageString: string,
+      brand: string,
+      quantity: number
+   }[],
+
+   information: {
+      delivered: boolean,
+      ordered: string,
+      cost: number
+   }
+}

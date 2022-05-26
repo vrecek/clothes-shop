@@ -1,5 +1,4 @@
 import React from 'react'
-import { MdOutlineArrowDropDown } from 'react-icons/md'
 import { LocationType } from '../../../../interfaces/user_interface'
 
 const SavedLocations = ({ personalData }: { personalData: LocationType[] }) => {
@@ -8,7 +7,7 @@ const SavedLocations = ({ personalData }: { personalData: LocationType[] }) => {
          {
             personalData?.length ?
             <>
-               <h4> <span>Saved locations ({ personalData.length })</span> <MdOutlineArrowDropDown /> </h4>
+               <h4> <span>Saved locations ({ personalData.length })</span> </h4>
                <ul>
                   <li>item</li>
                </ul>

@@ -27,15 +27,6 @@ main.view-users {
          font-weight: 500;
       }
 
-      div.wrap-flex {
-         width: 65%;
-         display: flex;
-      }
-      div.wrap-flex-info {
-         width: 45%;
-         display: flex;
-      }
-
       h4 {
          @include flex-c-c;
          color: $white-clr;
@@ -64,13 +55,68 @@ main.view-users {
 
       section.history {
          width: 40%;
-         min-width: 140px;
+         min-width: 270px;
          border-right: 1px solid $grey-clr;
+
+         h6 {
+            color: $white-clr;
+            padding-left: 1em;
+         }
+
+         button {
+            label {
+               color: $white-clr;
+               font-size: .6rem;
+               transition: .3s;
+            }
+
+            padding: .25em .5em;
+            outline: 0;
+            cursor: pointer;
+            background: none;
+            border: 1px solid orangered;
+            border-radius: .2em;
+            margin: 1em 0 0 1em;
+            transition: .3s;
+
+            &:hover {
+               border-color: orange;
+               label { color: orange; }
+            }
+         }
+
+         ul {
+            list-style: none;
+            margin-top: .5em;
+
+            li {
+               @include flex-sb-c;
+               border-bottom: 1px solid rgb(41, 41, 41);
+               padding: .1em 0;
+               
+               h5 {
+                  width: 33%;
+                  text-align: center;
+                  color: $grey-clr;
+                  font-size: clamp(.7rem, 3vw, .85rem);
+                  
+                  &.false {
+                     color: red;
+                     font-weight: 500;
+                  }
+                  &.true {
+                     color: green;
+                     font-weight: 500;
+                  }
+               }
+            }
+         }
       }
 
       section.icons {
          margin: 0 0 0 auto;
          @include flex-c-c;
+         width: 10%;
 
          span.one-icon {
             position: relative;
@@ -102,6 +148,7 @@ main.view-users {
                background: #252525;
                padding: 1em .5em;
                width: 200px;
+               z-index: 99;
 
                input {
                   background: #303030;
@@ -127,44 +174,15 @@ main.view-users {
          }
       }
 
-      section.saved-locations {
-         border-right: 1px solid $grey-clr;
-         width: 40%;
-         min-width: 140px;
-         padding: 0 .5em;
-
-         button {
-            width: 100%;
-            border: 0;
-            background: #303030;
-            padding: .5em 0;
-            margin-top: .5em;
-            cursor: pointer;
-            transition: .3s;
-
-            label {
-               font-weight: 500;
-               border-radius: .2em;
-               font-size: .9rem;
-               color: $grey-clr;
-               text-transform: uppercase;
-            }
-
-            &:hover {
-               background: #383838;
-            }
-         }
-      }
-
       section.basic-info {
          height: 100%;
          border-right: 1px solid $grey-clr;
-         width: 100%;
+         width: calc(40% - 1em);
 
          h3 {
             color: $white-clr;
             font-weight: 500;
-            font-size: clamp(.8rem, 1.5vw, .95rem);
+            font-size: clamp(.75rem, 1.5vw, .95rem);
 
             span {
                color: $grey-clr;
@@ -178,7 +196,7 @@ main.view-users {
       }
 
       figure {
-         min-width: 70px;
+         width: 10%;
          aspect-ratio: 1;
          position: relative;
          overflow: hidden;
@@ -229,15 +247,22 @@ main.view-users {
 
          section.basic-info {
             border: 0;
+            width: 100%;
          }
 
          section.saved-locations {
             padding: 0;
          }
 
+         section.history {
+            width: 100%;
+            border: 0;
+            margin-top: 1em;
+         }
+
          figure {
-            width: 15%;
-            min-width: 50px;
+            width: 70px;
+            margin-bottom: .5em;
          }
 
          div.wrap-flex {
@@ -255,6 +280,11 @@ main.view-users {
    main.view-users {
       article {
          padding: .25em;
+
+         section.history {
+            min-width: auto;
+         }
+
          section.icons {
             position: absolute;
             right: 0;
@@ -263,11 +293,6 @@ main.view-users {
          }
 
          section.saved-locations { width: 50%; min-width: auto; }
-         section.history {
-            width: 50%;
-            border: 0;
-            min-width: auto;
-         }
       }
    }
 }

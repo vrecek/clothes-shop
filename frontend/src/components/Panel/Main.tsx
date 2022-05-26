@@ -6,6 +6,7 @@ import ModifyStock from './ModifyStock'
 import ViewUsers from './ViewUsers'
 import { IoIosArrowForward } from 'react-icons/io'
 import ChangeOnSale from './ModifySale/ChangeOnSale'
+import RealizeOrders from './Orders/RealizeOrders'
 
 const Main = () => {
    const [actualPage, setPage] = React.useState<JSX.Element>(<MyProfile />)
@@ -39,6 +40,10 @@ const Main = () => {
 
          case 'users':
             setPage(<ViewUsers />)
+         break;
+
+         case 'orders':
+            setPage(<RealizeOrders />)
          break;
 
          default: break
@@ -82,6 +87,10 @@ const Main = () => {
                <li onClick={(e)=>changePage(e,'addnew')}>Add new product</li>
                <li onClick={(e)=>changePage(e,'modifystock')}>Modify stock products</li>
                <li onClick={(e)=>changePage(e,'modifysale')}>Modify on sale products</li>
+
+               <li className='separate margin'>Customize</li>
+
+               <li onClick={(e)=>changePage(e,'orders')}>Realize orders</li>
 
                <span onClick={ expandMenu } className='expand-arrow'> <IoIosArrowForward /> </span>
             </ul>

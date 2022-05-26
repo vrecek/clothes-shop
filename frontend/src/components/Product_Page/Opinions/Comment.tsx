@@ -7,7 +7,6 @@ import CommentUserRate from './CommentUserRate'
 import CommentUserText from './CommentUserText'
 
 const Comment = ({ details, userId, productId }: { details: CommentType, userId: string, productId: string }) => {
-   console.log(details);
    return (
       <article className='comment'>
          <CommentUserAvatar src={ details.author?.imageString || '' } />

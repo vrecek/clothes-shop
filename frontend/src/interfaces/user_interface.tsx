@@ -21,7 +21,7 @@ export default interface UserType {
    },
    imageString?: string,
    personalData?: LocationType[],
-   purchaseHistory?: ProductType[]
+   purchaseHistory?: PurchaseHistoryType[]
 }
 
 export interface TableDataType {
@@ -78,4 +78,52 @@ export interface LocationMap {
    details: LocationType,
    setHook: React.Dispatch<React.SetStateAction<LocationType[]>>,
    userId: string
+}
+
+export interface PurchaseHistoryType {
+   _id: string,
+   
+   products: { productId: string, quantity: number, size: string }[],
+
+   informations: {
+      orderedDate: string,
+      delivered: boolean,
+      cost: number,
+
+      deliveryInformation: {
+         deliveryMethod: string,
+         deliveryPrice: number,
+         deliveryType: string,
+
+         card: {
+            paymentMethod: string,
+            number: string,
+            cvv: string,
+            expiry: string
+         },
+
+         location: {
+            country: string,
+            city: string,
+            zip: string,
+
+            street: {
+               name: string,
+               building: number,
+               flat: number
+            }
+         },
+
+         person: {
+            firstName: string,
+            surname: string
+         }
+      }
+   }
+}
+
+export interface PanelDeleteUserType {
+   setDeleteConfirm: React.Dispatch<React.SetStateAction<boolean>>, 
+   deleteConfirm: boolean, 
+   deleteEnterFunc: React.KeyboardEventHandler
 }

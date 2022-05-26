@@ -2,7 +2,7 @@ import React from 'react'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import Fetches from '../../functions/Fetches'
 import Loading from '../../functions/Loading'
-import { LocationMap, LocationType } from '../../interfaces/user_interface'
+import { LocationMap } from '../../interfaces/user_interface'
 import DropDown from '../Main_Page/AllProducts/DropdownClass'
 import LocationDeleteIcon from './LocationDeleteIcon'
 import LocationEntryInfo from './LocationEntryInfo'
@@ -32,7 +32,7 @@ const Location = ({ details, number, setHook, userId }: LocationMap) => {
       l.appendImage(article)
 
       try {
-         await Fetches.mix(`/clothes-shop/api/user/delete-saved-location/${ userId }/${ details._id }`, 'DELETE')
+         await Fetches.mix(`${ process.env.REACT_APP_API_DELETE_SAVED_LOCATION }/${ userId }/${ details._id }`, 'DELETE')
          setHook(locs => locs.filter(x => x._id !== details._id))
 
       }catch(err: any) {

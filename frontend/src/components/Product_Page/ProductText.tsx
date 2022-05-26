@@ -8,13 +8,11 @@ import ProdSize from './TextSection/ProdSize'
 import ProdColor from './TextSection/ProdColor'
 import ProdAvailable from './TextSection/ProdAvailable'
 import ProdDesc from './TextSection/ProdDesc'
-import ProductType, { ProductTextType } from '../../interfaces/product_interface'
+import { ProductTextType } from '../../interfaces/product_interface'
 import Fetches from '../../functions/Fetches'
 import { useNavigate } from 'react-router-dom'
 import { TiTick } from 'react-icons/ti'
-import { LoggedUserContext } from '../../App'
 import { CartNumberContext } from '../../App'
-import UserType from '../../interfaces/user_interface'
 
 const ProductText = ({ _id, price, brand, name, size, colors, description, inStock, onSalePercent, rate, user }: ProductTextType) => {
    const cartNumberStateHook = React.useContext(CartNumberContext)!.setNumber

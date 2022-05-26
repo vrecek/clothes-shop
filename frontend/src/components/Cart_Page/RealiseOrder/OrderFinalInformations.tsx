@@ -9,9 +9,14 @@ import Button from '../../Reusable/Button'
 import { FiShoppingCart } from 'react-icons/fi'
 import Loading from '../../../functions/Loading'
 import Fetches from '../../../functions/Fetches'
+import { useNavigate } from 'react-router-dom'
+import { CartNumberContext } from '../../../App'
 
 const OrderFinalInformations = ({ user, products, deliveryValue, formRef, spanErrorFunc, gif }: FinalInformations) => {
    const [sumPrice, setPrice] = React.useState<number>(0)
+   const cartNumberHook = React.useContext(CartNumberContext)!.setNumber
+
+   const n = useNavigate()
 
    const stepNum: number = deliveryValue === 'c2' || deliveryValue === 'c3' ? 5 : 4
 
@@ -58,10 +63,12 @@ const OrderFinalInformations = ({ user, products, deliveryValue, formRef, spanEr
 
       // Payment method
       let num, cvv, expiry
+      let payMethod: string = ''
       if(delivery.paymentMethod === 'advance') {
          const payType = ELEMENTS.filter(x => x.name === 'payment-method-input' && x.checked)[0].dataset.pay
 
-         if(delivery.paymentMethod === 'advance') {    
+         if(delivery.paymentMethod === 'advance') { 
+            payMethod = payType ?? '' 
             if(payType === 'Credit card') {
                [num, cvv, expiry] = ELEMENTS.filter(x => x.className === 'card-input').map(x => x.value)
             }
@@ -91,13 +98,6 @@ const OrderFinalInformations = ({ user, products, deliveryValue, formRef, spanEr
             return
          }
       }
-      
-      const [label, span] = [...t.children as HTMLCollectionOf<HTMLElement>]
-
-      span.style.width = '0'
-      label.style.width = '100%'
-      t.style.width = `${ parseInt(window.getComputedStyle(label, null).getPropertyValue('width')) + 16 }px`
-      t.style.background = 'green'
 
       const l = new Loading(gif, 'loadingDivHeight loadingDivFixed')
       l.appendImage(document.body)
@@ -105,23 +105,27 @@ const OrderFinalInformations = ({ user, products, deliveryValue, formRef, spanEr
       const fetchBody = {
          products: products.map(x => {
             return {
-               _id: x._id,
+               productId: x._id,
                quantity: x?.quantity || 1,
-               productSize: x.productSize || null
+               size: x.productSize || null
             }
          }),
          user: user._id,
          save,
-         deliveryInfo: allInfo,
+         deliveryInfo: [...allInfo, payMethod],
          price: sumPrice,
          savedLocationId
       }
 
       try {
-        await Fetches.mix(process.env.REACT_APP_API_FINALIZE_ORDER!, 'PUT', fetchBody)
+         await Fetches.mix(process.env.REACT_APP_API_FINALIZE_ORDER!, 'PUT', fetchBody)
+         animateBtn(t)
+         cartNumberHook(curr => curr - products.length)
+
+         n('/cart/order/final', { state: { allowed: true } })
 
       }catch(err) {
-         console.log(err);
+         spanErrorFunc(t, 'There was an error during finalizing order. Try again.')
 
       }finally { l.removeImage() }
    }
@@ -148,6 +152,15 @@ const OrderFinalInformations = ({ user, products, deliveryValue, formRef, spanEr
    }, [])
 
    const returnDeliveryPrice = (x: HTMLElement): number => parseInt( x.parentElement?.parentElement?.children[2].textContent!.replace('$', '')! )
+
+   const animateBtn = (t: HTMLElement) => {
+      const [label, span] = [...t.children as HTMLCollectionOf<HTMLElement>]
+
+      span.style.width = '0'
+      label.style.width = '100%'
+      t.style.width = `${ parseInt(window.getComputedStyle(label, null).getPropertyValue('width')) + 16 }px`
+      t.style.background = 'green'
+   }
    
    return (
       <section className='final-informations'>

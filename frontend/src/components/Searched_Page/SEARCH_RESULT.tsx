@@ -10,8 +10,7 @@ import gif from '../../images/load.gif'
 import { useNavigate } from 'react-router-dom'
 
 const SEARCH_RESULT = () => {
-   const splited = window.location.pathname.split('/')
-   const [, , type, queryString] = [...splited]
+   const [, , type, queryString] = window.location.pathname.split('/')
 
    const [products, setProducts] = React.useState<ProductType[] | null>(null)
    const n = useNavigate()

@@ -12,8 +12,6 @@ const StockProduct = ({ imageString, brand, name, inStock, _id }: UpdateStockTyp
    let number: number = 0
 
    const changeNum = (e: React.MouseEvent, action: string) => {
-      const t = e.target as HTMLElement
-
       if(action === 'inc') {
          changeText('', '', (Math.abs(--number)).toString())
 

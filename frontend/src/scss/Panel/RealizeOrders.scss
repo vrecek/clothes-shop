@@ -1,0 +1,313 @@
+@import '../config';
+
+main.realize-orders {
+   .order-header {
+      text-align: center;
+      color: $white-clr;
+      font-weight: 500;
+   }
+
+   h1.one {
+      margin-top: 1em;
+      font-size: .9rem;
+   }
+
+   h2.two {
+      margin-bottom: 2em;
+      margin-top: .2em;
+      font-size: .8rem;
+   }
+
+   h1.empty-orders {
+      text-align: center;
+      color: crimson;
+      font-weight: 500;
+      font-size: clamp(1.25rem, 4vw, 1.5rem);
+   }
+
+   section.container {
+      article.order-realise {
+         background: rgb(48, 48, 48);
+         border-radius: .2em;
+         border: 1px solid $grey-clr;
+         padding: .5em;
+         margin-bottom: 2em;
+
+         section.mark {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            h4 {
+               color: $grey-clr;
+               font-size: clamp(.7rem, 2.5vw, .8rem);
+               font-weight: 500;
+               text-transform: uppercase;
+               transition: .3s;
+               cursor: pointer;
+               display: flex;
+               align-items: center;
+               position: relative;
+
+               p {
+                  color: red;
+                  background: #202020;
+                  padding: .25em;
+                  border-radius: .15em;
+                  font-weight: 500;
+                  position: absolute;
+                  top: 100%;
+                  left: 0;
+                  font-size: clamp(.55rem, 2.5vw, .65rem);
+                  text-align: center;
+                  width: 100%;
+               }
+   
+               svg {
+                  width: clamp(15px, 5vw, 20px);
+                  height: clamp(15px, 5vw, 20px);
+                  pointer-events: none;
+               }
+   
+               &:hover {
+                  color: rgb(77, 122, 255);
+               }
+
+               div.confirm {
+                  position: absolute;
+                  top: 100%;
+                  left: 0;
+                  width: 100%;
+                  border-radius: .1em;
+                  border: 1px solid $grey-clr;
+                  background: #303030;
+                  padding: .5em;
+
+                  input {
+                     display: block;
+                     width: 100%;
+                     background: #222222;
+                     border-radius: .15em;
+                     outline: 0;
+                     text-transform: uppercase;
+                     font-size: clamp(.65rem, 2.5vw, .7rem);
+                     border: 1px solid rgb(73, 73, 73);
+                     padding: .25em;
+                     font-weight: 700;
+                     color: $white-clr;
+                  }
+               }
+            }
+         }
+
+         h3 {
+            text-align: center;
+            color: $white-clr;
+            font-size: clamp(.7rem, 2.5vw, .85rem);
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 1em;
+         }
+
+         button.product-btn { 
+            margin: 1em 0; 
+            display: flex;
+            align-items: center;
+            cursor: pointer;      
+            background: none;
+            outline: 0;
+            border: 0;
+            color: $white-clr;
+            
+            label {
+               font-weight: 700;
+               font-size: clamp(.7rem, 2.5vw, .85rem);
+               text-transform: uppercase;
+               display: block;
+               transition: .3s;
+            }
+
+            svg {
+               pointer-events: none;
+               width: 20px;
+               height: 20px;
+               transition: .3s;
+            }
+
+            &:hover {
+               color: orangered;
+            }
+         }
+
+         section.order-table {
+            display: none;
+            height: 0;
+            overflow: hidden;
+            transition: .3s;   
+
+            table {
+               width: 100%;
+               background: #252525;             
+               border-radius: .2em;
+               border: 2px solid #383838;
+               border-collapse: collapse;
+               table-layout: fixed;
+
+               tbody {
+                  tr:not(:last-child) {
+                     td {
+                        padding-bottom: 1em;
+                     }
+                  }
+
+                  td {
+                     font-size: clamp(.45rem, 2vw, .85rem);
+                     color: $grey-clr;
+                     font-weight: 500;
+
+                     &.redirect {
+                        transition: .3s;
+                        cursor: pointer;
+                        padding: 0 .25em;
+
+                        &:hover {
+                           color: $white-clr;
+                        }
+                     }
+                  }
+
+                  figure {
+                     width: clamp(25px, 10vw, 70px);
+                     aspect-ratio: 1;
+                     overflow: hidden;
+                     position: relative;
+
+                     img {
+                        @include abs-50-50;
+                        width: 100%;
+                     }
+                  }
+               }
+               
+               thead {
+                  background: #303030;
+                  border-radius: .2em;
+                  width: 100%;
+   
+                  td {
+                     width: 16.6%;
+                     padding: .75em .5em;
+                     text-transform: uppercase;
+                     color: $white-clr;
+                     font-size: clamp(.5rem, 2.5vw, .8rem);
+                     font-weight: 400;
+                  }
+               }
+            }
+         }
+      
+         section.details {
+            display: flex;
+
+            article {
+               &:first-child { width: 50%; }
+               &:last-child { width: 50%; }
+
+               div.table-info {
+                  position: relative;
+
+                  section.tables {
+                     position: relative;
+                     height: 0;
+                     overflow: hidden;
+                     display: none;
+                     transition: .3s;
+                  }
+
+                  table {
+                     width: 100%;
+                     background: #252525;
+                     border: 1px solid #383838;
+                     border-radius: .2em;
+                     border-collapse: collapse;
+                     table-layout: fixed;
+
+                     &.one-cell { text-transform: uppercase; text-align: center; }
+
+                     thead {
+                        background: #303030;
+                        border-radius: .2em;
+
+                        td {
+                           width: 33.3%;
+                           text-align: center;
+                           padding: .75em .5em;
+                           text-transform: uppercase;
+                           color: $white-clr;
+                           font-size: clamp(.65rem, 2.5vw, .8rem);
+                           font-weight: 400;
+                        }
+                     }
+
+                     tbody {
+                        td {
+                           padding: 1em;
+                           color: $grey-clr;
+                           font-size: clamp(.55rem, 2.5vw, .75rem);
+                           font-weight: 400;
+                        }
+                     }
+                  }
+               }
+
+               h4 {
+                  font-size: clamp(.7rem, 2.5vw, .8rem);
+                  margin-bottom: .5em;
+                  font-weight: 500;
+                  color: $grey-clr;
+
+                  span:not(.show-span) {
+                     margin-left: .5em;
+                     font-weight: 500;
+                     color: cornflowerblue;
+                  }
+
+                  span.show-span {
+                     color: orangered;
+                     font-weight: 500;
+                     transition: .3s;
+                     padding: .1em;
+                     cursor: pointer;
+                     border-radius: .1em;
+
+                     &:hover {
+                        background: rgb(141, 38, 0);
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   main.realize-orders {
+      section.container {
+         article.order-realise {
+            section.order-table {
+               text-align: center;
+            }
+            
+            section.details {
+               flex-direction: column;
+   
+               article {
+                  &:last-child { width: 100%; }
+                  &:first-child { margin-bottom: 1em; width: 100%; }
+               }
+            }
+         }
+      }
+   }
+}

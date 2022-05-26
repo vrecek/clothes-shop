@@ -1,24 +1,36 @@
 import React from 'react'
-import { MdOutlineArrowDropDown } from 'react-icons/md'
-import ProductType from '../../../../interfaces/product_interface'
+import { PurchaseHistorySectionType } from '../../../../interfaces/panel_interfaces';
+import { PurchaseHistoryType } from '../../../../interfaces/user_interface'
+import Button from '../../../Reusable/Button';
+import HistoryLi from './HistoryLi';
 
-const PurchaseHistory = ({ purchaseHistory }: { purchaseHistory: ProductType[] }) => {
+const PurchaseHistory = ({ purchaseHistory, showHistory }: PurchaseHistorySectionType) => {
    return (
       <section className='history'>
+         <h4> <span>Purchase history ({ purchaseHistory.length })</span> </h4>
+
          {
             purchaseHistory?.length 
             ?
                <>
-                  <h4> <span>Purchase history ({ purchaseHistory.length })</span> <MdOutlineArrowDropDown /> </h4>
+                  <h6 className='latest'>Latest</h6>
                   <ul>
-                     <li>item</li>
+                     {
+                        purchaseHistory.map(x => (
+                           <HistoryLi
+                              key={ x._id }
+                              status={ x.informations.delivered }
+                              price={ x.informations.cost }
+                              number={ x.products.length }
+                           />
+                        ))   
+                     }
                   </ul>
-               </>       
+
+                  <Button text='View all' action={ showHistory } />
+               </> 
             :
-               <>
-                  <h4>Purchase history (0)</h4>
-                  <h3 className='empty-h3'>No history</h3>
-               </>
+               <h3 className='empty-h3'>No history</h3>
          }
       </section>
    )

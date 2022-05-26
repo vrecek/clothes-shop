@@ -22,6 +22,7 @@ import SEARCH_RESULT from './components/Searched_Page/SEARCH_RESULT';
 import About from './components/Information_Page/About';
 import Terms from './components/Information_Page/Terms';
 import ORDERDETAILS from './components/Cart_Page/RealiseOrder/OrderDetails';
+import FINAL_CONCLUSION from './components/Cart_Page/FinalConclusion/FINAL_CONCLUSION';
 
 const LoggedUserContext = React.createContext<UserType | null>(null)
 const CartNumberContext = React.createContext<{ numberProducts: number, setNumber: React.Dispatch<React.SetStateAction<number>> } | null>(null)
@@ -30,6 +31,7 @@ function App() {
   const [user, setUser] = React.useState<{ user: UserType | null, finished: boolean }>({ user: null, finished: false })
   const [cartNum, setCartNum] = React.useState<number>(0)
 
+  // USER
   React.useEffect(() => { 
     const init = async () => {
       const l = new Loading(gif, 'loadingDivHeight loadingDivFixed')
@@ -77,6 +79,7 @@ function App() {
 
               <Route path='/cart' element={ <USERCART /> } />
               <Route path='/cart/order' element={ <ORDERDETAILS /> } />
+              <Route path='/cart/order/final' element={ <FINAL_CONCLUSION /> } />
 
               <Route path={ process.env.REACT_APP_ROUTE } element={ <PANEL /> } />
 

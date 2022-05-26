@@ -100,7 +100,9 @@ const USERPROFILE = () => {
 
          <SavedLocations userId={ user._id } locations={ user.personalData! } />
 
-         <PurchaseHistory />
+         <PurchaseHistory 
+            products={ user.purchaseHistory || [] }
+         />
 
          <DeleteAccount _id={ user._id } />
       </main>

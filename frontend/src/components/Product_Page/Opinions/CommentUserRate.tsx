@@ -15,12 +15,21 @@ const CommentUserRate = ({ likes, dislikes, user, productId, commentId, whoDisli
    const rate = async (e: React.MouseEvent, type: string) => {
       const t = e.target as HTMLElement
 
+      if(!user) {
+         const h5 = document.createElement('h5')
+         h5.appendChild(document.createTextNode('Sign in to rate'))
+
+         t.parentElement?.appendChild(h5)
+         setTimeout(() => h5.remove(), 2500)
+
+         return
+      }
+
       changeColorsAndNum(t, t.parentElement as HTMLElement)
 
       try { 
          const params = `${ user }/${ productId }/${ commentId }/${ type }`
-         const data = await Fetches.mix(`${ process.env.REACT_APP_API_COMMENT_RATE! }/${ params } `, 'PATCH')
-         console.log(data);
+         await Fetches.mix(`${ process.env.REACT_APP_API_COMMENT_RATE! }/${ params } `, 'PATCH')
 
       }catch(err) {
          console.log(err);

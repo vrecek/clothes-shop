@@ -6,7 +6,7 @@ const GeneralNav = () => {
       <nav className='general-nav'>
          <ul>
             <li>
-               <a href='/' className='popular'>TRENDS</a>
+               <a href='/search/filter/trends' className='popular'>TRENDS</a>
                <a href='/search/filter/latest'> Latest </a>
                <a href='/search/filter/sale'> On sale </a>
             </li> 

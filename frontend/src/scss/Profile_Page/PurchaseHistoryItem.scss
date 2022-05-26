@@ -1,0 +1,103 @@
+@import '../config';
+
+article.third-article {
+   h2.empty-history {
+      padding: 3em 0;
+   }
+
+   section {
+      position: relative;
+
+      article.hist-item {
+         background: rgb(237, 237, 237);
+         border: 2px solid rgb(143, 143, 143);
+         border-radius: .2em;
+
+         section {
+            padding: .5em;
+            background: gainsboro;
+
+            h4 {
+               font-weight: 500;
+               margin: .5em 0;
+               font-size: clamp(.65rem, 3vw, .9rem);
+               color: #303030;
+
+               &.status {
+                  text-transform: uppercase;
+                  &.true { color: green; }
+                  &.false { color: red; }
+               }
+            }
+         }
+         
+         &:not(:last-child) {
+            margin-bottom: 1em;
+         }
+
+         table {
+            width: 100%;
+            border-collapse: collapse;
+
+            thead {
+               background: royalblue;  
+
+               td {
+                  padding: .5em;
+                  font-weight: 500;
+                  color: white;
+                  text-transform: uppercase;
+                  font-size: clamp(.6rem, 2.5vw, 1rem);
+               }
+            }
+
+            tbody {
+               td {
+                  padding: .5em;
+                  font-weight: 500;
+                  text-transform: uppercase;
+                  font-size: clamp(.55rem, 2.5vw, 1rem);
+
+                  &:first-child {
+                     width: 10%;
+                  }
+
+                  &:nth-child(2) {
+                     width: 45%;
+                  }
+
+                  figure {
+                     width: clamp(30px, 13vw, 90px);
+                     aspect-ratio: 1;
+                     overflow: hidden;
+                     position: relative;
+
+                     img {
+                        width: 100%;
+                        @include abs-50-50;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+@media (max-width: 768px) {
+   article.third-article {
+      section {
+         article.hist-item {
+
+            table {
+               tbody {
+                  td {
+                     width: auto;
+                  }
+               }
+            }
+
+         }
+      }
+   }
+}
