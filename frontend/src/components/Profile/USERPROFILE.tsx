@@ -93,7 +93,7 @@ const USERPROFILE = () => {
                showMenu={ showMenu }
                currentImage={ currentImage }
                changeRes={ changeRes }
-               imageString={ user.imageString || '' }
+               imageString={ user.avatar?.src ?? '' }
             />
 
          </article>

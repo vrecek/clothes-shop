@@ -1,6 +1,4 @@
 import React from 'react'
-import ProductType from '../../../interfaces/product_interface'
-import UserType from '../../../interfaces/user_interface'
 import Comment from '../Opinions/Comment'
 import CommentText from '../Opinions/CommentText'
 import WriteCommentArea from '../Opinions/WriteCommentArea'
@@ -8,8 +6,9 @@ import WriteCommentStars from '../Opinions/WriteCommentStars'
 import gif from '../../../images/load.gif'
 import Loading from '../../../functions/Loading'
 import Fetches from '../../../functions/Fetches'
+import { ProductSectionOpinionsType } from '../../../interfaces/product_interface'
 
-const ProductOpinions = ({ user, product }: { user: UserType | null, product: ProductType }) => {
+const ProductOpinions = ({ user, product, total, paginate, clickFunc, startPagination }: ProductSectionOpinionsType) => {
    const starsDiv = React.useRef<HTMLDivElement>(null)
    let currentStar: number = 0
    
@@ -112,27 +111,34 @@ const ProductOpinions = ({ user, product }: { user: UserType | null, product: Pr
          <form onSubmit={ postOpinion } className='leave-comment'>
             <WriteCommentArea 
                username={ user?.username || 'Not logged' }
-               imageString={ user?.imageString || null }
+               imageString={ user?.avatar?.src || null }
             />
 
             <WriteCommentStars reference={ starsDiv } />
          </form>
 
          <section className='comments'>
-            <CommentText commentsNumber={ product?.comments?.length ?? 0 } />
+            <CommentText commentsNumber={ total } />
 
             <section className='comments-container'>
                {
                   product.comments?.length 
                   ?
-                     product.comments.map(x => (
-                        <Comment 
-                           key={ x._id }
-                           userId={ user?._id ?? '' }
-                           details={ x }
-                           productId={ product._id }
-                        />
-                     ))
+                     <>
+                        {
+                           product.comments.map(x => (
+                              <Comment 
+                                 key={ x._id }
+                                 userId={ user?._id ?? '' }
+                                 details={ x }
+                                 productId={ product._id }
+                              />
+                           ))
+                        }
+                        {
+                           paginate.drawPages(startPagination ?? 1, clickFunc)
+                        }
+                     </>
                   :
                   <h2 className='no-comments'>There are no comments yet</h2>
                }

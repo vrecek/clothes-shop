@@ -32,7 +32,7 @@ const Product = (
 
          <section className='info'>
             <figure>
-               <img src={ productData.imageString } alt='product-avatar' />
+               <img src={ productData.imageSrc } alt='product-avatar' />
             </figure>
 
             <div className='names'>

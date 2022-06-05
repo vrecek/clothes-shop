@@ -23,6 +23,7 @@ import About from './components/Information_Page/About';
 import Terms from './components/Information_Page/Terms';
 import ORDERDETAILS from './components/Cart_Page/RealiseOrder/OrderDetails';
 import FINAL_CONCLUSION from './components/Cart_Page/FinalConclusion/FINAL_CONCLUSION';
+import CookiesInfo from './components/Layout/CookiesInfo';
 
 const LoggedUserContext = React.createContext<UserType | null>(null)
 const CartNumberContext = React.createContext<{ numberProducts: number, setNumber: React.Dispatch<React.SetStateAction<number>> } | null>(null)
@@ -53,6 +54,9 @@ function App() {
     init()
   }, [])
 
+  const isCookieConfirmed: boolean = document.cookie.split(';')
+                                          .filter(x => /cookie_confirm/i.test(x)).length > 0
+
   if(user.finished)
   return (
     <div className="App">
@@ -60,6 +64,9 @@ function App() {
 
         <LoggedUserContext.Provider value={ user.user }>
           <CartNumberContext.Provider value={ { numberProducts: cartNum, setNumber: setCartNum } }>
+            {
+              !isCookieConfirmed && <CookiesInfo />
+            }
 
             <ArrowTop />
             <Nav />

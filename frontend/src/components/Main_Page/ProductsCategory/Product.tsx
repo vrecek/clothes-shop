@@ -9,7 +9,7 @@ const Product = ({ details }: { details: ProductType }) => {
    return (
       <section className='product'>
          <figure>
-            <img src={ details.imageString } alt='prod' />
+            <img src={ details.imageSrc } alt='prod' />
          </figure>
 
          <h6>{ details.brand }</h6>

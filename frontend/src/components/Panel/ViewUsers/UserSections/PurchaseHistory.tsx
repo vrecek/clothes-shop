@@ -1,13 +1,12 @@
 import React from 'react'
 import { PurchaseHistorySectionType } from '../../../../interfaces/panel_interfaces';
-import { PurchaseHistoryType } from '../../../../interfaces/user_interface'
 import Button from '../../../Reusable/Button';
 import HistoryLi from './HistoryLi';
 
-const PurchaseHistory = ({ purchaseHistory, showHistory }: PurchaseHistorySectionType) => {
+const PurchaseHistory = ({ purchaseHistory, showHistory, total }: PurchaseHistorySectionType) => {
    return (
       <section className='history'>
-         <h4> <span>Purchase history ({ purchaseHistory.length })</span> </h4>
+         <h4> <span>Purchase history ({ total })</span> </h4>
 
          {
             purchaseHistory?.length 

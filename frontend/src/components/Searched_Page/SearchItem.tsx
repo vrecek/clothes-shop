@@ -2,6 +2,7 @@ import React from 'react'
 import { MainMenuProduct } from '../../interfaces/product_interface'
 import Button from '../Reusable/Button'
 import { roundToHalf, getDiscountPrice } from '../../functions/CalculatePercent'
+
 const SearchItem = ({ imageString, name, brand, _id, price, onSalePercent }: MainMenuProduct) => {
    return (
       <article>

@@ -8,12 +8,41 @@ import BlankPage from '../Layout/BlankPage'
 import SearchItem from './SearchItem'
 import gif from '../../images/load.gif'
 import { useNavigate } from 'react-router-dom'
+import Pagination from '../../functions/Pagination'
 
 const SEARCH_RESULT = () => {
    const [, , type, queryString] = window.location.pathname.split('/')
 
    const [products, setProducts] = React.useState<ProductType[] | null>(null)
+   const [paginate, setPaginate] = React.useState<Pagination>(new Pagination(0,0))
    const n = useNavigate()
+
+   let uri: string = ''
+
+   try {
+      switch(type) {
+         case 'bar': 
+            uri = `${ process.env.REACT_APP_API_SEARCH_BAR }/${ queryString }`
+         break
+   
+         case 'category':
+            uri = `${ process.env.REACT_APP_API_SEARCH_CATEGORY }/${ queryString }`
+         break
+   
+         case 'filter':
+            uri = `${ process.env.REACT_APP_API_SEARCH_FILTER }/${ queryString }`
+         break
+   
+         default: 
+            throw {
+               status: 404,
+               msg: 'Page does not exist'
+            }
+      }
+
+   }catch(err: any) {
+      n('/error', { state: { code: err.status, msg: err.statusText } })
+   }
 
    React.useEffect(() => {
       const init = async () => {
@@ -21,30 +50,10 @@ const SEARCH_RESULT = () => {
          l.appendImage(document.body)
 
          try {
-            let uri: string = ''
+            const data = await Fetches.mix(`${ uri }/1/4`, 'GET')
 
-            switch(type) {
-               case 'bar': 
-                  uri = `${ process.env.REACT_APP_API_SEARCH_BAR }/${ queryString }`
-               break
-
-               case 'category':
-                  uri = `${ process.env.REACT_APP_API_SEARCH_CATEGORY }/${ queryString }`
-               break
-
-               case 'filter':
-                  uri = `${ process.env.REACT_APP_API_SEARCH_FILTER }/${ queryString }`
-               break
-
-               default: 
-                  throw {
-                     status: 404,
-                     msg: 'Page does not exist'
-                  }
-            }
-
-            const data = await Fetches.mix(uri, 'GET')
-            setProducts(data)
+            setPaginate(new Pagination(4, data.total))
+            setProducts(data.products)
 
          }catch(err: any) {
             n('/error', { state: { code: err.status, msg: err.statusText } })
@@ -53,6 +62,18 @@ const SEARCH_RESULT = () => {
       }
       init()
    }, [])
+
+   const setPage = async (e: React.MouseEvent) => {
+      const paginationDetails = {
+         navigate: n,
+         target: e.target as HTMLElement,
+         uri
+      }
+
+      const data = await paginate.basicPaginateFetch(paginationDetails)
+      console.log(data);
+      setProducts(data.products)
+   }
 
    if(products)
    return (
@@ -66,7 +87,7 @@ const SEARCH_RESULT = () => {
                      key={ i }
                      name={ x.name }
                      brand={ x.brand }
-                     imageString={ x.imageString }
+                     imageString={ x.imageSrc }
                      price={ x.price }
                      _id={ x._id }
                      onSalePercent={ x.onSalePercent || 0 }
@@ -74,6 +95,9 @@ const SEARCH_RESULT = () => {
                ))
                :
                <h2>No products found</h2>
+            }
+            {
+               paginate.drawPages(1, setPage)
             }
          </section>
       </main>

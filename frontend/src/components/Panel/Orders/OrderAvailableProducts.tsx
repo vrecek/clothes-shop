@@ -8,7 +8,7 @@ const OrderAvailableProducts = ({ item }: { item: AvailableOrdersProductsType })
       <tr>
          <td>
             <figure>
-               <img src={ item.item.imageString } alt='product' />
+               <img src={ item.item.imageSrc } alt='product' />
             </figure>
          </td>
 

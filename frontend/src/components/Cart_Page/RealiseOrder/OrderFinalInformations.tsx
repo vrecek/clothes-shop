@@ -178,7 +178,7 @@ const OrderFinalInformations = ({ user, products, deliveryValue, formRef, spanEr
                         brand={ x.brand }
                         name={ x.name }
                         price={ x.price }
-                        imageSrc={ x.imageString! }
+                        imageSrc={ x.imageSrc }
                         quantity={ x.quantity || 1 }
                         discountPrice={ x.discountPrice }
                      />

@@ -56,7 +56,7 @@ const AllPurchaseHistorySection = ({ username, closeHook, purchaseHistory }: Pan
                                  key={ j }
                                  name={ y.name }
                                  brand={ y.brand }
-                                 image={ y.imageString }
+                                 image={ y.imageSrc }
                                  price={ y.price }
                                  number={ y.quantity }           
                               />

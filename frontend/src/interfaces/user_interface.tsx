@@ -1,5 +1,5 @@
 import { ChangeEventHandler, FormEventHandler, MouseEventHandler } from "react"
-import ProductType, { CartProductType } from "./product_interface"
+import { CartProductType } from "./product_interface"
 
 export default interface UserType {
    _id: string,
@@ -15,11 +15,10 @@ export default interface UserType {
       productId: string,
       selectedSize: string
    }],
-   image?: {
-      data: Buffer
-      extension: String
+   avatar?: {
+      src: string
+      fileName: string
    },
-   imageString?: string,
    personalData?: LocationType[],
    purchaseHistory?: PurchaseHistoryType[]
 }

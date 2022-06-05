@@ -21,7 +21,7 @@ const SaleProduct = ({ product }: { product: ProductType }) => {
       l.appendImage(t.parentElement as HTMLElement)
 
       try {
-         await Fetches.mix(`/clothes-shop/api/product/product-set-discount/${ product._id }/${ input.value || null }`, 'PATCH')
+         await Fetches.mix(`${ process.env.REACT_APP_API_SET_DISCOUNT_PRODUCT }/${ product._id }/${ input.value || null }`, 'PATCH')
 
          const currentPercentCont = t.parentElement!.children[3].children[0]
          currentPercentCont.textContent = `-${ input.value }%` 
@@ -81,7 +81,7 @@ const SaleProduct = ({ product }: { product: ProductType }) => {
    return (
       <article>
          <figure>
-            <img src={ product.imageString } alt='product' />
+            <img src={ product.imageSrc } alt='product' />
          </figure>
 
          <h2>{ product.name }</h2>

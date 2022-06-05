@@ -9,7 +9,6 @@ css
 backend
 .env
 Fetches.tsx
-BCOPY
 
 # testing
 /coverage

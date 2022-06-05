@@ -87,7 +87,7 @@ const ORDERDETAILS = () => {
 
       const t = e.target as HTMLElement
       const form = t.parentElement! as HTMLFormElement
-      const radios = [...form.elements as HTMLCollectionOf<HTMLInputElement>].filter(x => x.type === 'radio')
+      const radios = [...form.elements as HTMLCollectionOf<HTMLInputElement>].filter(x => x.type === 'radio' && x.classList.contains('delivery-select'))
 
       let deliveryMethod: string = ''
       for(let x of radios) {

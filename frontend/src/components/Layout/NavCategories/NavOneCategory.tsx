@@ -34,14 +34,16 @@ const NavOneCategory = ({ text, items, categoryName }: NavigateCategory) => {
       n.dropDown(t, list, arrowIcon, { element: t, color: 'orange', defaultColor: 'rgb(248, 248, 248)' })
 
       const listBound = list.getBoundingClientRect()
+      console.log(listBound);
+      // console.log(windo);
       if((window.innerWidth - listBound.width) < listBound.left) {
          const targetBound = t.getBoundingClientRect()
 
          const fixWidth:number = -(listBound.width - targetBound.width)
 
          if(targetBound.left - Math.abs(fixWidth) < 0) {
-            list.style.left = `50%`
-            list.style.transform = 'translateX(-50%)'
+            // list.style.left = `100%`
+            // list.style.transform = 'translateX(-50%)'
 
             return
          }

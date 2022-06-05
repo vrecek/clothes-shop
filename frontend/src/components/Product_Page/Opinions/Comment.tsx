@@ -9,12 +9,12 @@ import CommentUserText from './CommentUserText'
 const Comment = ({ details, userId, productId }: { details: CommentType, userId: string, productId: string }) => {
    return (
       <article className='comment'>
-         <CommentUserAvatar src={ details.author?.imageString || '' } />
+         <CommentUserAvatar src={ details.author?.imageString ?? '' } />
 
          <section>
 
             <CommentUserInfo
-               username={ details.author.username }
+               username={ details.author?.username ?? 'es' }
                rate={ details.rate }
                date={ details.date } 
             />

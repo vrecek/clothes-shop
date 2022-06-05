@@ -483,7 +483,7 @@ main.order-details {
             width: 70%;
             padding: 1.5em 0;      
             font-weight: 400;
-            font-size: 1.1rem;
+            font-size: clamp(.95rem, 3vw, 1.1rem);
             letter-spacing: -1px;
             color: #252525;
 
@@ -502,6 +502,7 @@ main.order-details {
       width: 20%;
       padding: 1em 0;
       outline: 0;
+      min-width: 110px;
       border: 0;
       background: royalblue;
       border-radius: .2em;
@@ -520,7 +521,7 @@ main.order-details {
       }
 
       label {
-         font-size: 1.1rem;
+         font-size: clamp(.9rem, 3vw, 1.1rem);
          text-transform: uppercase;
          font-weight: 500;
          color: $white-clr;
@@ -534,6 +535,7 @@ main.order-details {
 
    button.last {
       width: 30%;
+      min-width: 160px;
       @include flex-sa-c;
       transition: .3s;
 

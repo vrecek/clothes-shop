@@ -19,7 +19,7 @@ const PurchaseHistoryItem = ({ details }: { details: HistoryProductType }) => {
                         key={ i }
                         name={ x.name }
                         brand={ x.brand }
-                        image={ x.imageString }
+                        image={ x.imageSrc }
                         price={ x.updatedPrice }
                         quantity={ x.quantity }
                      />

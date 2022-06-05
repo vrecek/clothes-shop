@@ -142,7 +142,9 @@ main.main-search-products-result {
          margin: 1.5em .5em;
          
          figure {
-            height: 200px;
+            height: 170px;
+            
+            img { width: auto; height: 100%; }
          }
       }
 

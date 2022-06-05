@@ -1,4 +1,5 @@
 import { MouseEventHandler } from "react"
+import Pagination from "../functions/Pagination"
 import UserType from "./user_interface"
 
 export default interface ProductType {
@@ -22,6 +23,8 @@ export default interface ProductType {
 
    orderedTimes?: number,
 
+   imageSrc: string,
+
    price: number,
 
    description: string,
@@ -39,11 +42,6 @@ export default interface ProductType {
    colors: string[],
 
    material: string[],
-
-   image?: {
-      data: Buffer
-      extension: String
-   },
 
    rate: number,
 
@@ -103,7 +101,7 @@ export interface MainMenuProduct {
 
 export interface CartProductType {
    _id: string,
-   imageString: string | undefined,
+   imageSrc: string,
    name: string,
    brand: string,
    price: number,
@@ -160,7 +158,7 @@ export interface HistoryProductFetchData {
    name: string,
    price: number,
    onSalePercent: number,
-   imageString: string,
+   imageSrc: string,
    brand: string
 }
 
@@ -169,7 +167,7 @@ export interface HistoryProductType {
       updatedPrice: number,
       name: string,
       price: number,
-      imageString: string,
+      imageSrc: string,
       brand: string,
       quantity: number
    }[],
@@ -179,4 +177,23 @@ export interface HistoryProductType {
       ordered: string,
       cost: number
    }
+}
+
+export interface ProductSectionOpinionsType {
+   user: UserType | null, 
+   product: ProductType, 
+   total: number,
+   paginate: Pagination,
+   clickFunc: React.MouseEventHandler,
+   startPagination?: number
+}
+
+export interface ProductPageType {
+   product: {
+      product: ProductType, 
+      totalCom: number, 
+      id: string
+   } | null,
+   paginate: Pagination | null,
+   visibleSection: JSX.Element | null
 }

@@ -99,7 +99,7 @@ const CartProduct = ({ product, userId, productStateHook, gif, asideRef }: CartO
       <article className='cart-product'>
 
          <figure>
-            <img src={ product.imageString } alt='product' />
+            <img src={ product.imageSrc } alt='product' />
          </figure>
 
          <section className='text'>

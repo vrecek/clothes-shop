@@ -15,12 +15,12 @@ import BlankPage from '../Layout/BlankPage'
 import { scroller } from 'react-scroll'
 import TwoImagesContainer from './TwoImages/TwoImagesContainer'
 
-const MainPageProductContext = React.createContext<ProductType[] | null>(null)
+const MainPageProductContext = React.createContext<{ items: ProductType[], total: number } | null>(null)
 
 const MAIN_PAGE = () => {
    const n = useNavigate()
 
-   const [prods, setProds] = React.useState<ProductType[] | null>(null)
+   const [prods, setProds] = React.useState<{ items: ProductType[], total: number } | null>(null)
 
    React.useEffect(() => {
       const init = async () => {
@@ -28,7 +28,7 @@ const MAIN_PAGE = () => {
          l.appendImage(document.body)
 
          try {
-            const res = await fetch(process.env.REACT_APP_API_ALL_MAINPAGE_PRODUCTS!, {
+            const res = await fetch(`${ process.env.REACT_APP_API_CATEGORY_MAINPAGE_PRODUCTS }/1/4`, {
                method: "GET",
                headers: {
                   "Content-Type": "application/json"
@@ -37,8 +37,9 @@ const MAIN_PAGE = () => {
 
             if(!res.ok) throw res
 
-            const data = await res.json()          
-            setProds(data)
+            const data = await res.json()   
+  
+            setProds({ items: data.items, total: data.total })
 
          }catch(err: any) {
             n('/error', { state: { msg: err.statusText, code: err.status } })

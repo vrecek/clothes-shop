@@ -4,7 +4,7 @@ import { MainPageProductContext } from '../MAIN_PAGE'
 import CardContainer from './CardContainer'
 
 const Category = ({ type }: { type: string }) => {
-   const products = React.useContext(MainPageProductContext)
+   const products = React.useContext(MainPageProductContext)?.items
    const typeProducts = products!.filter(x => x.category === type)
 
    return (

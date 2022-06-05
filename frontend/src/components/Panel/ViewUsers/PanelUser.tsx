@@ -53,7 +53,7 @@ const PanelUser = ({ details, setUsersHook }: PanelUserType) => {
    return (
       <article>
          <figure>
-            <img src={ details.imageString || blank } alt='avatar' />
+            <img src={ details.avatar?.src || blank } alt='avatar' />
          </figure>
 
          <BasicInfo
@@ -65,6 +65,7 @@ const PanelUser = ({ details, setUsersHook }: PanelUserType) => {
          />
 
          <PurchaseHistory 
+            total={ details.purchaseHistory?.length ?? 0 }
             purchaseHistory={ details.purchaseHistory?.slice(0, 2) || [] }
             showHistory={ showHistory }
          />

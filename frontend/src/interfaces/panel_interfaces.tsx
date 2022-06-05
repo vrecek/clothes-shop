@@ -1,7 +1,10 @@
+import Pagination from "../functions/Pagination";
+import ProductType from "./product_interface";
 import UserType, { PurchaseHistoryType } from "./user_interface";
 
 export interface PurchaseHistorySectionType {
    purchaseHistory: PurchaseHistoryType[],
+   total: number,
    showHistory: () => void
 }
 
@@ -84,7 +87,7 @@ export interface AvailableOrdersTableType {
 export interface AvailableOrdersProductsType {
    item: {
       brand: string,
-      imageString: string,
+      imageSrc: string,
       name: string,
       price: number
    },
@@ -96,4 +99,14 @@ export interface AvailableOrdersProductsType {
 export interface OrderComponentType {
    details: AvailableOrdersType,
    productsHook: React.Dispatch<React.SetStateAction<AvailableOrdersType[] | null>>
+}
+
+export interface PanelAllProducts {
+   products: ProductType[],
+   total: number
+}
+
+export interface ProductDetailsState {
+   total: number,
+   pagination: Pagination
 }

@@ -5,6 +5,7 @@ import SliderRadios from './SliderRadios'
 import s1 from '../../../images/slide1.png'
 import s2 from '../../../images/slide2.png'
 import s3 from '../../../images/slide3.png'
+import GreetingInfo from './GreetingInfo'
 
 const SliderContainer = () => {
    const sliderRef = React.useRef<HTMLDivElement>(null)
@@ -123,7 +124,7 @@ const SliderContainer = () => {
    return (
       <section className='image-slider-container'>
 
-         <h1>Lorem ipsum dolor 20% off</h1>
+         <GreetingInfo>New products available</GreetingInfo>
 
          <section className='image-wrap'>
             <span className='arrow left' onClick={ (e) => moveSlider(e, 'left') }> <AiOutlineLeft /> </span>
